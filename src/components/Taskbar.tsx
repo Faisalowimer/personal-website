@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
 import { WIN95_ICONS } from '@/config/icons';
+import Image from 'next/image';
 
 const Taskbar = () => {
     return (
