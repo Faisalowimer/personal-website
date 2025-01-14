@@ -47,3 +47,63 @@ body {
 .desktop-icon {
   cursor: url('/icons/mouse.png') 1 1, pointer !important;
 }
+
+@keyframes hourglassSpin {
+
+  0%,
+  40% {
+    transform: rotate(0deg);
+  }
+
+  45%,
+  90% {
+    transform: rotate(180deg);
+  }
+
+  95%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes upperSand {
+
+  0%,
+  40% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  45%,
+  90% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  95%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lowerSand {
+
+  0%,
+  40% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  45%,
+  90% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  95%,
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
