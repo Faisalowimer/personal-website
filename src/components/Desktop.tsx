@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea
 import Taskbar from './Taskbar';
 import DesktopIcon from './DesktopIcon';
 import Window from './Window';
+import Loading from './Loading';
 import { useWindowStore } from '@/store/useWindowStore';
 import { WIN95_ICONS } from '@/config/icons';
 
@@ -24,8 +25,11 @@ const Desktop = () => {
     useEffect(() => {
         // Reset positions and wait for hydration
         resetPositions();
-        setIsLoading(false);
     }, [resetPositions]);
+
+    const handleLoadingComplete = () => {
+        setIsLoading(false);
+    };
 
     const handleDragEnd = (result: DropResult) => {
         // Always return to original position, regardless of destination
@@ -78,7 +82,7 @@ const Desktop = () => {
     }, [clearSelection]);
 
     if (isLoading) {
-        return <div className="min-h-screen bg-[#008080]" />;
+        return <Loading onComplete={handleLoadingComplete} />;
     }
 
     return (
