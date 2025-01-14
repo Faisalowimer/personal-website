@@ -1,7 +1,10 @@
+import { Resume } from './windows/resume/Resume';
+import { Contact } from './windows/contact/Contact';
+import { AboutMe } from './windows/aboutMe/AboutMe';
+import { Projects } from './windows/projects/Projects';
+import { TechStack } from './windows/techStack/TechStack';
 import { useWindowStore } from '@/store/useWindowStore';
 import { Window as WindowType } from '@/store/useWindowStore';
-import TechStack from './windows/techStack/TechStack';
-import AboutMe from './windows/aboutMe/AboutMe';
 
 interface Position {
     x: number;
@@ -26,6 +29,12 @@ const Window = ({ window, position }: WindowProps) => {
                 return <TechStack />;
             case 'about':
                 return <AboutMe />;
+            case 'projects':
+                return <Projects />;
+            case 'resume':
+                return <Resume />;
+            case 'contact':
+                return <Contact />;
             default:
                 return <div className="p-4">Content for {window.title}</div>;
         }

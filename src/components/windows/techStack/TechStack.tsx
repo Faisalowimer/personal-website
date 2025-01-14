@@ -3,7 +3,7 @@ import Image from 'next/image';
 import DriveItem from './DriveItem';
 import PerformanceBar from './PerformanceBar';
 
-const TechStack = () => {
+export const TechStack = () => {
     const showProficiency = false; // Toggle this to show/hide proficiency
 
     return (
@@ -70,5 +70,3 @@ const TechStack = () => {
         </div>
     );
 };
-
-export default TechStack; 
