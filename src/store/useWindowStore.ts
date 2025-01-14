@@ -1,53 +1,162 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-interface Window {
+export interface Position {
+    x: number;
+    y: number;
+}
+
+export interface Window {
     id: string;
     title: string;
     isOpen: boolean;
     isActive: boolean;
     component: string;
     order: number;
+    position: Position;
+    selected?: boolean;
+    windowPosition?: Position;
+    zIndex: number;
 }
 
 interface WindowStore {
     windows: Window[];
     activeWindow: string | null;
+    selectedIcons: string[];
     openWindow: (id: string) => void;
     closeWindow: (id: string) => void;
     setActiveWindow: (id: string) => void;
-    reorderIcons: (startIndex: number, endIndex: number) => void;
+    updateIconPosition: (id: string, position: Position) => void;
+    updateWindowPosition: (id: string, position: Position) => void;
+    toggleIconSelection: (id: string, multiSelect: boolean) => void;
+    clearSelection: () => void;
+    bringToFront: (id: string) => void;
 }
 
-export const useWindowStore = create<WindowStore>((set) => ({
-    windows: [
-        { id: 'computer', title: 'My Computer', isOpen: false, isActive: false, component: 'computer', order: 0 },
-        { id: 'about', title: 'About Me', isOpen: false, isActive: false, component: 'about', order: 1 },
-        { id: 'resume', title: 'Resume', isOpen: false, isActive: false, component: 'resume', order: 2 },
-        { id: 'projects', title: 'Projects', isOpen: false, isActive: false, component: 'projects', order: 3 },
-        { id: 'contact', title: 'Contact', isOpen: false, isActive: false, component: 'contact', order: 4 },
-    ],
-    activeWindow: null,
-    openWindow: (id) => set((state) => ({
-        windows: state.windows.map((window) =>
-            window.id === id ? { ...window, isOpen: true, isActive: true } : { ...window, isActive: false }
-        ),
-        activeWindow: id,
-    })),
-    closeWindow: (id) => set((state) => ({
-        windows: state.windows.map((window) =>
-            window.id === id ? { ...window, isOpen: false, isActive: false } : window
-        ),
-    })),
-    setActiveWindow: (id) => set((state) => ({
-        windows: state.windows.map((window) =>
-            window.id === id ? { ...window, isActive: true } : { ...window, isActive: false }
-        ),
-        activeWindow: id,
-    })),
-    reorderIcons: (startIndex: number, endIndex: number) => set((state) => {
-        const newWindows = Array.from(state.windows);
-        const [removed] = newWindows.splice(startIndex, 1);
-        newWindows.splice(endIndex, 0, removed);
-        return { windows: newWindows.map((window, index) => ({ ...window, order: index })) };
-    }),
-})); 
+const DEFAULT_WINDOWS = [
+    {
+        id: 'computer',
+        title: 'My Computer',
+        isOpen: false,
+        isActive: false,
+        component: 'computer',
+        order: 0,
+        position: { x: 20, y: 20 },
+        windowPosition: { x: 50, y: 80 },
+        zIndex: 0
+    },
+    {
+        id: 'about',
+        title: 'About Me',
+        isOpen: false,
+        isActive: false,
+        component: 'about',
+        order: 1,
+        position: { x: 120, y: 20 },
+        windowPosition: { x: 120, y: 20 },
+        zIndex: 0
+    },
+    {
+        id: 'projects',
+        title: 'Projects',
+        isOpen: false,
+        isActive: false,
+        component: 'projects',
+        order: 2,
+        position: { x: 220, y: 20 },
+        windowPosition: { x: 220, y: 20 },
+        zIndex: 0
+    },
+    {
+        id: 'resume',
+        title: 'Resume',
+        isOpen: false,
+        isActive: false,
+        component: 'resume',
+        order: 3,
+        position: { x: 320, y: 20 },
+        windowPosition: { x: 320, y: 20 },
+        zIndex: 0
+    },
+    {
+        id: 'contact',
+        title: 'Contact',
+        isOpen: false,
+        isActive: false,
+        component: 'contact',
+        order: 4,
+        position: { x: 420, y: 20 },
+        windowPosition: { x: 420, y: 20 },
+        zIndex: 0
+    }
+];
+
+export const useWindowStore = create(
+    persist<WindowStore>(
+        (set) => ({
+            windows: DEFAULT_WINDOWS,
+            activeWindow: null,
+            selectedIcons: [],
+            openWindow: (id) => set((state) => {
+                const maxZIndex = Math.max(...state.windows.map(w => w.zIndex));
+                return {
+                    windows: state.windows.map((window) =>
+                        window.id === id
+                            ? { ...window, isOpen: true, isActive: true, zIndex: maxZIndex + 1 }
+                            : { ...window, isActive: false }
+                    ),
+                    activeWindow: id,
+                };
+            }),
+            closeWindow: (id) => set((state) => ({
+                windows: state.windows.map((window) =>
+                    window.id === id ? { ...window, isOpen: false, isActive: false } : window
+                ),
+                activeWindow: state.activeWindow === id ? null : state.activeWindow,
+            })),
+            setActiveWindow: (id) => set((state) => {
+                const maxZIndex = Math.max(...state.windows.map(w => w.zIndex));
+                return {
+                    windows: state.windows.map((window) =>
+                        window.id === id
+                            ? { ...window, isActive: true, zIndex: maxZIndex + 1 }
+                            : { ...window, isActive: false }
+                    ),
+                    activeWindow: id,
+                };
+            }),
+            updateIconPosition: (id, position) => set((state) => ({
+                windows: state.windows.map((window) =>
+                    window.id === id ? { ...window, position } : window
+                ),
+            })),
+            updateWindowPosition: (id, position) => set((state) => ({
+                windows: state.windows.map((window) =>
+                    window.id === id ? { ...window, windowPosition: position } : window
+                ),
+            })),
+            toggleIconSelection: (id, multiSelect) => set((state) => {
+                const isSelected = state.selectedIcons.includes(id);
+                const newSelectedIcons = multiSelect
+                    ? isSelected
+                        ? state.selectedIcons.filter((i) => i !== id)
+                        : [...state.selectedIcons, id]
+                    : [id];
+                return { selectedIcons: newSelectedIcons };
+            }),
+            clearSelection: () => set({ selectedIcons: [] }),
+            bringToFront: (id) => set((state) => {
+                const maxZIndex = Math.max(...state.windows.map(w => w.zIndex));
+                return {
+                    windows: state.windows.map((window) =>
+                        window.id === id ? { ...window, zIndex: maxZIndex + 1 } : window
+                    ),
+                };
+            }),
+        }),
+        {
+            name: 'windows-store',
+            skipHydration: false
+        }
+    )
+); 

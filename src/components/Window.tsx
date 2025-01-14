@@ -1,40 +1,55 @@
 import React from 'react';
+import { Window as WindowType } from '@/store/useWindowStore';
+import { useWindowStore } from '@/store/useWindowStore';
 
-interface WindowProps {
-    title: string;
-    children: React.ReactNode;
-    isActive?: boolean;
-    onClose?: () => void;
-    onClick?: () => void;
+interface Position {
+    x: number;
+    y: number;
 }
 
-const Window = ({ title, children, isActive = true, onClose, onClick }: WindowProps) => {
+interface WindowProps {
+    window: WindowType;
+    position?: Position;
+}
+
+const Window = ({ window, position }: WindowProps) => {
+    const { closeWindow, setActiveWindow } = useWindowStore();
+
+    const handleWindowClick = () => {
+        setActiveWindow(window.id);
+    };
+
     return (
         <div
-            onClick={onClick}
+            onClick={handleWindowClick}
+            style={{
+                position: 'absolute',
+                left: position?.x || 100,
+                top: position?.y || 100,
+                zIndex: window.zIndex,
+            }}
             className={`
                 border-[2px] 
                 border-[#dfdfdf] 
                 bg-[#c0c0c0]
                 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]
                 w-[300px]
-                ${isActive ? 'z-10' : 'z-0'}
+                select-none
+                cursor-default
             `}
         >
-            <div className="bg-[#000080] text-white px-2 py-1 flex justify-between items-center">
-                <span>{title}</span>
+            <div className={`px-2 py-1 flex justify-between items-center ${window.isActive ? 'bg-[#000080] text-white' : 'bg-[#808080] text-[#c0c0c0]'}`}>
+                <span>{window.title}</span>
                 <button
-                    className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
                     onClick={(e) => {
                         e.stopPropagation();
-                        onClose?.();
+                        closeWindow(window.id);
                     }}
-                >
-                    ×
-                </button>
+                    className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
+                >×</button>
             </div>
             <div className="p-4">
-                {children}
+                <p>Content for {window.title}</p>
             </div>
         </div>
     );
