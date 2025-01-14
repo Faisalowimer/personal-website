@@ -107,3 +107,45 @@ body {
         opacity: 0;
     }
 }
+
+/* Windows 95 Scrollbar Styles */
+.win95-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: #c0c0c0 #dfdfdf;
+}
+
+.win95-scrollbar::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background: #dfdfdf;
+}
+
+.win95-scrollbar::-webkit-scrollbar-track {
+    background: #dfdfdf;
+    border-left: 1px solid #868686;
+}
+
+.win95-scrollbar::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #0a0a0a;
+}
+
+.win95-scrollbar::-webkit-scrollbar-button {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #0a0a0a;
+}
+
+.win95-scrollbar::-webkit-scrollbar-button:vertical:start {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 4L3 9H13L8 4Z' fill='black'/%3E%3C/svg%3E");
+}
+
+.win95-scrollbar::-webkit-scrollbar-button:vertical:end {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 12L13 7H3L8 12Z' fill='black'/%3E%3C/svg%3E");
+}

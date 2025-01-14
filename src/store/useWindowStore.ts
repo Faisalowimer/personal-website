@@ -32,18 +32,19 @@ interface WindowStore {
     clearSelection: () => void;
     bringToFront: (id: string) => void;
     resetPositions: () => void;
+    clearStore: () => void;
 }
 
 const DEFAULT_WINDOWS = [
     {
         id: 'computer',
-        title: 'My Computer',
+        title: 'Tech Stack',
         isOpen: false,
         isActive: false,
-        component: 'computer',
+        component: 'techstack',
         order: 0,
         position: { x: 20, y: 20 },
-        windowPosition: { x: 120, y: 100 },
+        windowPosition: { x: 120, y: 30 },
         zIndex: 0
     },
     {
@@ -54,7 +55,7 @@ const DEFAULT_WINDOWS = [
         component: 'about',
         order: 1,
         position: { x: 20, y: 130 },
-        windowPosition: { x: 180, y: 180 },
+        windowPosition: { x: 180, y: 130 },
         zIndex: 0
     },
     {
@@ -65,7 +66,7 @@ const DEFAULT_WINDOWS = [
         component: 'projects',
         order: 2,
         position: { x: 20, y: 220 },
-        windowPosition: { x: 260, y: 260 },
+        windowPosition: { x: 260, y: 230 },
         zIndex: 0
     },
     {
@@ -76,7 +77,7 @@ const DEFAULT_WINDOWS = [
         component: 'resume',
         order: 3,
         position: { x: 20, y: 320 },
-        windowPosition: { x: 340, y: 340 },
+        windowPosition: { x: 340, y: 330 },
         zIndex: 0
     },
     {
@@ -87,7 +88,7 @@ const DEFAULT_WINDOWS = [
         component: 'contact',
         order: 4,
         position: { x: 20, y: 420 },
-        windowPosition: { x: 420, y: 420 },
+        windowPosition: { x: 420, y: 430 },
         zIndex: 0
     }
 ];
@@ -161,6 +162,10 @@ export const useWindowStore = create(
                     windowPosition: DEFAULT_WINDOWS[index].windowPosition
                 }))
             })),
+            clearStore: () => {
+                localStorage.removeItem('windows-store');
+                set({ windows: DEFAULT_WINDOWS, activeWindow: null, selectedIcons: [] });
+            },
         }),
         {
             name: 'windows-store',
