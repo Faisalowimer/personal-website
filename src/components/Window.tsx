@@ -1,6 +1,7 @@
 import React from 'react';
 import { Window as WindowType } from '@/store/useWindowStore';
 import { useWindowStore } from '@/store/useWindowStore';
+import TechStack from './windows/techStack/TechStack';
 
 interface Position {
     x: number;
@@ -19,6 +20,15 @@ const Window = ({ window, position }: WindowProps) => {
         setActiveWindow(window.id);
     };
 
+    const renderContent = () => {
+        switch (window.id) {
+            case 'computer':
+                return <TechStack />;
+            default:
+                return <div className="p-4">Content for {window.title}</div>;
+        }
+    };
+
     return (
         <div
             onClick={handleWindowClick}
@@ -33,9 +43,11 @@ const Window = ({ window, position }: WindowProps) => {
                 border-[#dfdfdf] 
                 bg-[#c0c0c0]
                 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]
-                w-[300px]
+                w-[650px]
+                h-[500px]
                 select-none
                 cursor-default
+                pb-2
             `}
         >
             <div className={`px-2 py-1 flex justify-between items-center ${window.isActive ? 'bg-[#000080] text-white' : 'bg-[#808080] text-[#c0c0c0]'}`}>
@@ -48,8 +60,14 @@ const Window = ({ window, position }: WindowProps) => {
                     className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
                 >×</button>
             </div>
-            <div className="p-4">
-                <p>Content for {window.title}</p>
+            <div className="p-2 h-[calc(100%-28px)]">
+                <div className="relative h-full border-[2px] bg-[#c0c0c0]">
+                    <div className="absolute inset-0 border-[2px] border-l-[#868686] border-t-[#868686] border-r-[#dfdfdf] border-b-[#dfdfdf]">
+                        <div className="absolute inset-0 border-[2px] border-l-[#404040] border-t-[#404040] border-r-white border-b-white overflow-auto win95-scrollbar">
+                            {renderContent()}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
