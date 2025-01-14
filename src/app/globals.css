@@ -3,107 +3,107 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 0, 128, 128;
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 0, 128, 128;
 }
 
 * {
-  cursor: url('/icons/mouse.png') 1 1, auto !important;
+    cursor: url('/icons/mouse.png') 1 1, auto !important;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
 }
 
 /* Windows 95 style button */
 .win95-btn {
-  @apply px-4 py-2 border-[2px] bg-[#c0c0c0] active:bg-[#bdbdbd];
-  box-shadow: inset -1px -1px #0a0a0a,
-    inset 1px 1px #ffffff,
-    inset -2px -2px grey,
-    inset 2px 2px #dfdfdf;
+    @apply px-4 py-2 border-[2px] bg-[#c0c0c0] active:bg-[#bdbdbd];
+    box-shadow: inset -1px -1px #0a0a0a,
+        inset 1px 1px #ffffff,
+        inset -2px -2px grey,
+        inset 2px 2px #dfdfdf;
 }
 
 .clickable {
-  cursor: url('/icons/mouse.png') 1 1, pointer !important;
+    cursor: url('/icons/mouse.png') 1 1, pointer !important;
 }
 
 .dragging {
-  cursor: grabbing !important;
+    cursor: grabbing !important;
 }
 
 .desktop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 80px);
-  grid-template-rows: repeat(auto-fill, 100px);
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-template-rows: repeat(auto-fill, 100px);
+    gap: 1rem;
 }
 
 .icon-selected {
-  background: rgba(0, 0, 128, 0.4);
+    background: rgba(0, 0, 128, 0.4);
 }
 
 .desktop-icon {
-  cursor: url('/icons/mouse.png') 1 1, pointer !important;
+    cursor: url('/icons/mouse.png') 1 1, pointer !important;
 }
 
 @keyframes hourglassSpin {
 
-  0%,
-  40% {
-    transform: rotate(0deg);
-  }
+    0%,
+    40% {
+        transform: rotate(0deg);
+    }
 
-  45%,
-  90% {
-    transform: rotate(180deg);
-  }
+    45%,
+    90% {
+        transform: rotate(180deg);
+    }
 
-  95%,
-  100% {
-    transform: rotate(360deg);
-  }
+    95%,
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes upperSand {
 
-  0%,
-  40% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+    0%,
+    40% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
 
-  45%,
-  90% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
+    45%,
+    90% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
 
-  95%,
-  100% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+    95%,
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
 }
 
 @keyframes lowerSand {
 
-  0%,
-  40% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
+    0%,
+    40% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
 
-  45%,
-  90% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+    45%,
+    90% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
 
-  95%,
-  100% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
+    95%,
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
 }
