@@ -50,19 +50,19 @@ export const TECH_SKILLS: DriveItemData[] = [
     {
         label: "Testing & Quality (I:)",
         icon: "/icons/drive.png",
-        totalSpace: "Jest, Cypress, React Testing Library",
+        totalSpace: "Puppeteer, Vitest, Storybook",
         usedSpace: "80%"
     },
     {
-        label: "Version Control & Testing(J:)",
+        label: "Version Control (J:)",
         icon: "/icons/drive.png",
-        totalSpace: "Git, GitHub, Puppeteer, Vitest, Storybook",
+        totalSpace: "Git, GitHub",
         usedSpace: "95%"
     },
     {
-        label: "Libraries & Languages (K:)",
+        label: "Languages & Libraries (K:)",
         icon: "/icons/drive.png",
-        totalSpace: "Typescript, Shadcn, FramerMotion, TanStack, MagicUI, Lucid, Pangea, Resend, Sendgrid",
+        totalSpace: "Typescript, Shadcn, FramerMotion, Zod, TanStack, MagicUI, Lucid, Pangea, Resend, Sendgrid",
         usedSpace: "88%"
     },
 ];

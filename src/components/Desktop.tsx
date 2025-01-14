@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
-import Taskbar from './Taskbar';
-import DesktopIcon from './DesktopIcon';
-import Window from './Window';
-import Loading from './Loading';
-import { useWindowStore } from '@/store/useWindowStore';
 import { WIN95_ICONS } from '@/config/icons';
+import { useWindowStore } from '@/store/useWindowStore';
+import { useEffect, useRef, useState } from 'react';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
+import Window from './Window';
+import Taskbar from './Taskbar';
+import Loading from './Loading';
+import DesktopIcon from './DesktopIcon';
 
 const Desktop = () => {
     const [isLoading, setIsLoading] = useState(true);

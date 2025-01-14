@@ -1,7 +1,7 @@
-import React from 'react';
-import { Window as WindowType } from '@/store/useWindowStore';
 import { useWindowStore } from '@/store/useWindowStore';
+import { Window as WindowType } from '@/store/useWindowStore';
 import TechStack from './windows/techStack/TechStack';
+import AboutMe from './windows/aboutMe/AboutMe';
 
 interface Position {
     x: number;
@@ -24,6 +24,8 @@ const Window = ({ window, position }: WindowProps) => {
         switch (window.id) {
             case 'computer':
                 return <TechStack />;
+            case 'about':
+                return <AboutMe />;
             default:
                 return <div className="p-4">Content for {window.title}</div>;
         }
@@ -51,7 +53,7 @@ const Window = ({ window, position }: WindowProps) => {
             `}
         >
             <div className={`px-2 py-1 flex justify-between items-center ${window.isActive ? 'bg-[#000080] text-white' : 'bg-[#808080] text-[#c0c0c0]'}`}>
-                <span>{window.title}</span>
+                <span className="font-bold ml-1">{window.title}</span>
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
