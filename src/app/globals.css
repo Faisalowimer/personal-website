@@ -10,6 +10,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  cursor: url('/mouse.png'), auto;
 }
 
 /* Windows 95 style button */
@@ -21,21 +22,21 @@ body {
     inset 2px 2px #dfdfdf;
 }
 
-.drag-handle {
-  cursor: default;
-  user-select: none;
+.clickable {
+  cursor: pointer;
 }
 
-.drag-handle:active {
-  cursor: grabbing;
+.dragging {
+  cursor: grabbing !important;
 }
 
-/* Prevent text selection while dragging */
-.drag-handle span {
-  pointer-events: none;
+.desktop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-rows: repeat(auto-fill, 100px);
+  gap: 1rem;
 }
 
-/* Ensure icons stay above windows when dragging */
-.react-draggable-dragging {
-  z-index: 9999;
+.icon-selected {
+  background: rgba(0, 0, 128, 0.4);
 }

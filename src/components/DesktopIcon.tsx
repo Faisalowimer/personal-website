@@ -4,16 +4,13 @@ import Image from 'next/image';
 interface DesktopIconProps {
     icon: string;
     label: string;
-    onClick: () => void;
+    isSelected?: boolean;
 }
 
-const DesktopIcon = ({ icon, label, onClick }: DesktopIconProps) => {
+const DesktopIcon = ({ icon, label, isSelected }: DesktopIconProps) => {
     return (
-        <div className="w-[80px]">
-            <button
-                onClick={onClick}
-                className="w-full flex flex-col items-center gap-1 p-2 text-white hover:bg-[#000080]/40 focus:bg-[#000080]/40"
-            >
+        <div className={`w-[80px] p-2 ${isSelected ? 'icon-selected' : ''}`}>
+            <div className="flex flex-col items-center gap-1">
                 <Image
                     src={icon}
                     alt={label}
@@ -21,8 +18,10 @@ const DesktopIcon = ({ icon, label, onClick }: DesktopIconProps) => {
                     height={32}
                     className="w-8 h-8"
                 />
-                <span className="text-sm text-center break-words">{label}</span>
-            </button>
+                <span className="text-sm text-center break-words text-white">
+                    {label}
+                </span>
+            </div>
         </div>
     );
 };
