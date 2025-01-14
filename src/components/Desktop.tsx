@@ -14,37 +14,26 @@ const Desktop = () => {
         selectedIcons,
         toggleIconSelection,
         clearSelection,
-        updateIconPosition
+        updateIconPosition,
+        resetPositions
     } = useWindowStore();
 
     const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const lastClickedIcon = useRef<string | null>(null);
 
     useEffect(() => {
-        // Wait for hydration
+        // Reset positions and wait for hydration
+        resetPositions();
         setIsLoading(false);
-    }, []);
+    }, [resetPositions]);
 
     const handleDragEnd = (result: DropResult) => {
-        if (!result.destination) return;
-
+        // Always return to original position, regardless of destination
         const { draggableId } = result;
-
-        // Get the mouse position from the drag event
-        const mouseEvent = (result as any).source.dragEvent as MouseEvent;
-        if (!mouseEvent) return;
-
-        // Calculate position relative to the desktop area
-        const desktopElement = document.querySelector('.desktop-area');
-        if (!desktopElement) return;
-
-        const rect = desktopElement.getBoundingClientRect();
-        const newPosition = {
-            x: Math.max(0, Math.min(mouseEvent.clientX - rect.left, rect.width - 80)),
-            y: Math.max(0, Math.min(mouseEvent.clientY - rect.top, rect.height - 100))
-        };
-
-        updateIconPosition(draggableId, newPosition);
+        const window = windows.find(w => w.id === draggableId);
+        if (window) {
+            updateIconPosition(draggableId, window.position);
+        }
     };
 
     const handleIconClick = (id: string, e: React.MouseEvent) => {
@@ -96,7 +85,7 @@ const Desktop = () => {
         <div className="min-h-screen bg-[#008080] relative overflow-hidden">
             <div className="p-4 h-[calc(100vh-40px)] desktop-area">
                 <DragDropContext onDragEnd={handleDragEnd}>
-                    <Droppable droppableId="desktop">
+                    <Droppable droppableId="desktop" type="icon">
                         {(provided) => (
                             <div
                                 ref={provided.innerRef}
@@ -121,6 +110,8 @@ const Desktop = () => {
                                                     position: 'absolute',
                                                     left: window.position.x,
                                                     top: window.position.y,
+                                                    transition: snapshot.isDragging ? undefined : 'all 0.2s ease-out',
+                                                    zIndex: snapshot.isDragging ? 1000 : 1
                                                 }}
                                                 onClick={(e) => handleIconClick(window.id, e)}
                                             >

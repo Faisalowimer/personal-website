@@ -7,10 +7,13 @@
   --background-rgb: 0, 128, 128;
 }
 
+* {
+  cursor: url('/icons/mouse.png') 1 1, auto !important;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  cursor: url('/mouse.png'), auto;
 }
 
 /* Windows 95 style button */
@@ -23,7 +26,7 @@ body {
 }
 
 .clickable {
-  cursor: pointer;
+  cursor: url('/icons/mouse.png') 1 1, pointer !important;
 }
 
 .dragging {
@@ -39,4 +42,8 @@ body {
 
 .icon-selected {
   background: rgba(0, 0, 128, 0.4);
+}
+
+.desktop-icon {
+  cursor: url('/icons/mouse.png') 1 1, pointer !important;
 }

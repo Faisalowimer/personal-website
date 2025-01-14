@@ -31,6 +31,7 @@ interface WindowStore {
     toggleIconSelection: (id: string, multiSelect: boolean) => void;
     clearSelection: () => void;
     bringToFront: (id: string) => void;
+    resetPositions: () => void;
 }
 
 const DEFAULT_WINDOWS = [
@@ -42,7 +43,7 @@ const DEFAULT_WINDOWS = [
         component: 'computer',
         order: 0,
         position: { x: 20, y: 20 },
-        windowPosition: { x: 50, y: 80 },
+        windowPosition: { x: 120, y: 100 },
         zIndex: 0
     },
     {
@@ -52,8 +53,8 @@ const DEFAULT_WINDOWS = [
         isActive: false,
         component: 'about',
         order: 1,
-        position: { x: 120, y: 20 },
-        windowPosition: { x: 120, y: 20 },
+        position: { x: 20, y: 130 },
+        windowPosition: { x: 180, y: 180 },
         zIndex: 0
     },
     {
@@ -63,8 +64,8 @@ const DEFAULT_WINDOWS = [
         isActive: false,
         component: 'projects',
         order: 2,
-        position: { x: 220, y: 20 },
-        windowPosition: { x: 220, y: 20 },
+        position: { x: 20, y: 220 },
+        windowPosition: { x: 260, y: 260 },
         zIndex: 0
     },
     {
@@ -74,8 +75,8 @@ const DEFAULT_WINDOWS = [
         isActive: false,
         component: 'resume',
         order: 3,
-        position: { x: 320, y: 20 },
-        windowPosition: { x: 320, y: 20 },
+        position: { x: 20, y: 320 },
+        windowPosition: { x: 340, y: 340 },
         zIndex: 0
     },
     {
@@ -85,8 +86,8 @@ const DEFAULT_WINDOWS = [
         isActive: false,
         component: 'contact',
         order: 4,
-        position: { x: 420, y: 20 },
-        windowPosition: { x: 420, y: 20 },
+        position: { x: 20, y: 420 },
+        windowPosition: { x: 420, y: 420 },
         zIndex: 0
     }
 ];
@@ -153,6 +154,13 @@ export const useWindowStore = create(
                     ),
                 };
             }),
+            resetPositions: () => set((state) => ({
+                windows: state.windows.map((window, index) => ({
+                    ...window,
+                    position: DEFAULT_WINDOWS[index].position,
+                    windowPosition: DEFAULT_WINDOWS[index].windowPosition
+                }))
+            })),
         }),
         {
             name: 'windows-store',
