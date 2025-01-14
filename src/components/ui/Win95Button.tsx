@@ -5,7 +5,7 @@ interface Win95ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
     children: React.ReactNode;
 }
 
-const Win95Button = ({ active, children, className = '', ...props }: Win95ButtonProps) => (
+export const Win95Button = ({ active, children, className = '', ...props }: Win95ButtonProps) => (
     <button
         {...props}
         className={`
@@ -28,5 +28,3 @@ const Win95Button = ({ active, children, className = '', ...props }: Win95Button
         {children}
     </button>
 );
-
-export default Win95Button; 

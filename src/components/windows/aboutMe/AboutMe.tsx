@@ -1,9 +1,9 @@
-import { ABOUT_ME_SECTIONS, TabType, TABS } from './config';
 import { useState } from 'react';
+import { Win95Button } from '@/components/ui/Win95Button';
+import { ABOUT_ME_SECTIONS, TabType, TABS } from './config';
 import Image from 'next/image';
-import Win95Button from '@/components/ui/Win95Button';
 
-const AboutMe = () => {
+export const AboutMe = () => {
     const [activeTab, setActiveTab] = useState<TabType>('personal');
 
     return (
@@ -21,7 +21,7 @@ const AboutMe = () => {
             </div>
 
             {/* Menu Bar */}
-            <div className="flex gap-1 p-2 border-b border-gray-400">
+            <div className="flex p-2 border-b border-gray-400">
                 {TABS.map(tab => (
                     <Win95Button
                         key={tab.id}
@@ -55,5 +55,3 @@ const AboutMe = () => {
         </div>
     );
 };
-
-export default AboutMe; 
