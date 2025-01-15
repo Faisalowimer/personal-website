@@ -1,4 +1,5 @@
 import { DriveItem } from '@/components/window/iconWindows/techStack/DriveItem';
+import { WIN95_ICONS } from '@/config/icons';
 import { WindowHeader } from '../../WindowHeader';
 import { PerformanceBar } from '@/components/window/iconWindows/techStack/PerformanceBar';
 import { TECH_SKILLS, PERFORMANCE_METRICS } from '@/components/window/iconWindows/techStack/config';
@@ -10,7 +11,7 @@ export const TechStack = () => {
         <div className="flex flex-col h-full font-mono text-xs">
             {/* Header section */}
             <WindowHeader
-                icon="/icons/computer.png"
+                icon={WIN95_ICONS.computer}
                 title="Tech Stack Overview"
             />
 
