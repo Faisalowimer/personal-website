@@ -6,6 +6,7 @@ import Window from './Window';
 import Taskbar from './Taskbar';
 import Loading from './Loading';
 import DesktopIcon from './DesktopIcon';
+import { Win95Button } from './ui/Win95Button';
 
 const Desktop = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -92,12 +93,12 @@ const Desktop = () => {
     return (
         <div className="min-h-screen bg-[#008080] relative overflow-hidden">
             {isDevelopment && (
-                <button
+                <Win95Button
                     onClick={clearStore}
                     className="absolute top-2 right-2 z-50 win95-btn text-xs"
                 >
                     Reset Windows
-                </button>
+                </Win95Button>
             )}
             <div className="p-4 h-[calc(100vh-40px)] desktop-area">
                 <DragDropContext onDragEnd={handleDragEnd}>
