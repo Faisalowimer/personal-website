@@ -5,6 +5,7 @@ import { Projects } from './iconWindows/projects/Projects';
 import { TechStack } from './iconWindows/techStack/TechStack';
 import { useWindowStore } from '@/store/useWindowStore';
 import { Window as WindowType } from '@/store/useWindowStore';
+import { useState } from 'react';
 
 interface Position {
     x: number;
@@ -18,9 +19,24 @@ interface WindowProps {
 
 export const WindowContainer = ({ window, position }: WindowProps) => {
     const { closeWindow, setActiveWindow } = useWindowStore();
+    const [isMaximized, setIsMaximized] = useState(false);
+    const [previousPosition, setPreviousPosition] = useState<Position | null>(null);
+
+    const TASKBAR_HEIGHT = 50; // Height of the taskbar
+    const TOP_MARGIN = 40; // Margin from the top of the screen
+    const BOTTOM_MARGIN = 40; // Margin from the taskbar
 
     const handleWindowClick = () => {
         setActiveWindow(window.id);
+    };
+
+    const handleMaximizeClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (!isMaximized) {
+            // Store current position before maximizing
+            setPreviousPosition({ x: position?.x || 100, y: position?.y || 100 });
+        }
+        setIsMaximized(!isMaximized);
     };
 
     const renderContent = () => {
@@ -40,22 +56,32 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
         }
     };
 
+    const windowStyle = isMaximized ? {
+        position: 'fixed',
+        left: '50%',
+        top: TOP_MARGIN,
+        transform: 'translateX(-50%)',
+        width: '90vw',
+        height: `calc(100vh - ${TASKBAR_HEIGHT + TOP_MARGIN + BOTTOM_MARGIN}px)`,
+        zIndex: window.zIndex,
+    } as const : {
+        position: 'absolute',
+        left: previousPosition?.x || position?.x || 100,
+        top: previousPosition?.y || position?.y || 100,
+        width: '650px',
+        height: '500px',
+        zIndex: window.zIndex,
+    } as const;
+
     return (
         <div
             onClick={handleWindowClick}
-            style={{
-                position: 'absolute',
-                left: position?.x || 100,
-                top: position?.y || 100,
-                zIndex: window.zIndex,
-            }}
+            style={windowStyle}
             className={`
                 border-[2px] 
                 border-[#dfdfdf] 
                 bg-[#c0c0c0]
                 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]
-                w-[650px]
-                h-[500px]
                 select-none
                 cursor-default
                 pb-2
@@ -63,13 +89,21 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
         >
             <div className={`px-2 py-1 flex justify-between items-center ${window.isActive ? 'bg-[#000080] text-white' : 'bg-[#808080] text-[#c0c0c0]'}`}>
                 <span className="font-bold ml-1">{window.title}</span>
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        closeWindow(window.id);
-                    }}
-                    className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
-                >×</button>
+                <div className="flex gap-1">
+                    <button
+                        onClick={handleMaximizeClick}
+                        className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
+                    >
+                        {isMaximized ? '❐' : '□'}
+                    </button>
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            closeWindow(window.id);
+                        }}
+                        className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
+                    >×</button>
+                </div>
             </div>
             <div className="p-2 h-[calc(100%-28px)]">
                 <div className="relative h-full border-[2px] bg-[#c0c0c0]">
