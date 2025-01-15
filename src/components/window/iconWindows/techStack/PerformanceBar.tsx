@@ -3,7 +3,7 @@ interface PerformanceBarProps {
     value: number;
 }
 
-const PerformanceBar = ({ label, value }: PerformanceBarProps) => (
+export const PerformanceBar = ({ label, value }: PerformanceBarProps) => (
     <div>
         <div className="text-xs mb-1 flex justify-between">
             <span>{label}</span>
@@ -17,5 +17,3 @@ const PerformanceBar = ({ label, value }: PerformanceBarProps) => (
         </div>
     </div>
 );
-
-export default PerformanceBar; 

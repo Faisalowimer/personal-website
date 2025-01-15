@@ -1,5 +1,5 @@
+import { Hourglass } from '@/components/Hourglass';
 import { useEffect, useState } from 'react';
-import Hourglass from '../Hourglass';
 import Image from 'next/image';
 
 interface LoadingIndicatorProps {

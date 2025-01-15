@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 
 interface DesktopIconProps {
@@ -7,7 +6,7 @@ interface DesktopIconProps {
     isSelected?: boolean;
 }
 
-const DesktopIcon = ({ icon, label, isSelected }: DesktopIconProps) => {
+export const DesktopIcon = ({ icon, label, isSelected }: DesktopIconProps) => {
     return (
         <div className={`w-[80px] p-2 ${isSelected ? 'icon-selected' : ''}`}>
             <div className="flex flex-col items-center gap-1">
@@ -25,5 +24,3 @@ const DesktopIcon = ({ icon, label, isSelected }: DesktopIconProps) => {
         </div>
     );
 };
-
-export default DesktopIcon; 

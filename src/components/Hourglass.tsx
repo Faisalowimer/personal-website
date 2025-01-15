@@ -1,5 +1,5 @@
 
-const Hourglass = () => {
+export const Hourglass = () => {
     return (
         <div className="inline-block animate-[hourglassSpin_3s_linear_infinite]">
             <svg
@@ -63,5 +63,3 @@ const Hourglass = () => {
         </div>
     );
 };
-
-export default Hourglass; 

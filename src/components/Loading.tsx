@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Hourglass from './Hourglass';
+import { Hourglass } from '@/components/Hourglass';
+import { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 
 interface LoadingProps {
     onComplete: () => void;
 }
 
-const Loading = ({ onComplete }: LoadingProps) => {
+export const Loading = ({ onComplete }: LoadingProps) => {
     const [progress, setProgress] = useState(0);
     const [showConfetti, setShowConfetti] = useState(false);
 
@@ -83,5 +83,3 @@ const Loading = ({ onComplete }: LoadingProps) => {
         </div>
     );
 };
-
-export default Loading; 

@@ -9,7 +9,7 @@ interface DriveItemProps {
     className?: string;
 }
 
-const DriveItem = ({ label, icon, usedSpace, totalSpace, className = '' }: DriveItemProps) => (
+export const DriveItem = ({ label, icon, usedSpace, totalSpace, className = '' }: DriveItemProps) => (
     <div className={`flex items-start gap-2 p-1.5 hover:bg-[#000080]/10 cursor-pointer ${className}`}>
         <Image
             src={icon}
@@ -26,5 +26,3 @@ const DriveItem = ({ label, icon, usedSpace, totalSpace, className = '' }: Drive
         </div>
     </div>
 );
-
-export default DriveItem; 

@@ -1,7 +1,7 @@
-import { TECH_SKILLS, PERFORMANCE_METRICS } from './config';
+import { DriveItem } from '@/components/window/iconWindows/techStack/DriveItem';
+import { PerformanceBar } from '@/components/window/iconWindows/techStack/PerformanceBar';
+import { TECH_SKILLS, PERFORMANCE_METRICS } from '@/components/window/iconWindows/techStack/config';
 import Image from 'next/image';
-import DriveItem from './DriveItem';
-import PerformanceBar from './PerformanceBar';
 
 export const TechStack = () => {
     const showProficiency = false; // Toggle this to show/hide proficiency

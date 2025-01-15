@@ -1,14 +1,14 @@
+import { Taskbar } from '@/components/Taskbar';
+import { Loading } from '@/components/Loading';
+import { DesktopIcon } from '@/components/DesktopIcon';
+import { Win95Button } from '@/components/ui/Win95Button';
 import { WIN95_ICONS } from '@/config/icons';
 import { useWindowStore } from '@/store/useWindowStore';
+import { WindowContainer } from '@/components/window/WindowContainer';
 import { useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
-import Window from './Window';
-import Taskbar from './Taskbar';
-import Loading from './Loading';
-import DesktopIcon from './DesktopIcon';
-import { Win95Button } from './ui/Win95Button';
 
-const Desktop = () => {
+export const Desktop = () => {
     const [isLoading, setIsLoading] = useState(true);
     const {
         windows,
@@ -149,7 +149,7 @@ const Desktop = () => {
                 {windows
                     .filter((w) => w.isOpen)
                     .map((window) => (
-                        <Window
+                        <WindowContainer
                             key={window.id}
                             window={window}
                             position={window.windowPosition}
@@ -160,5 +160,3 @@ const Desktop = () => {
         </div>
     );
 };
-
-export default Desktop; 
