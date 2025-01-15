@@ -1,27 +1,31 @@
 import { useState } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
+import { WindowHeader } from '@/components/window/WindowHeader';
+import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { ABOUT_ME_SECTIONS, TabType, TABS } from '@/components/window/iconWindows/aboutMe/config';
-import Image from 'next/image';
+import { WindowStatusBar } from '../../WindowStatusBar';
 
 export const AboutMe = () => {
     const [activeTab, setActiveTab] = useState<TabType>('personal');
 
+    // Function to count words in a string
+    const getWordCount = (text: string): number => {
+        return text.trim().split(/\s+/).length;
+    };
+
+    // Get word count for current tab
+    const currentWordCount = getWordCount(ABOUT_ME_SECTIONS[activeTab]);
+
     return (
         <div className="flex flex-col h-full font-mono text-xs">
-            {/* Notepad Header */}
-            <div className="flex items-center gap-2 p-2 border-b border-gray-400">
-                <Image
-                    src="/icons/about.png"
-                    alt="Notepad"
-                    width={16}
-                    height={16}
-                    className="w-4 h-4"
-                />
-                <span className="text-sm font-bold">Personal Story Overview</span>
-            </div>
+            {/* Header section */}
+            <WindowHeader
+                icon="/icons/about.png"
+                title="Personal Story Overview"
+            />
 
-            {/* Menu Bar */}
-            <div className="flex p-2 border-b border-gray-400">
+            {/* Toolbar section */}
+            <WindowToolbar>
                 {TABS.map(tab => (
                     <Win95Button
                         key={tab.id}
@@ -31,7 +35,7 @@ export const AboutMe = () => {
                         {tab.label}
                     </Win95Button>
                 ))}
-            </div>
+            </WindowToolbar>
 
             {/* Content Area */}
             <div className="flex-1 p-4 overflow-auto">
@@ -52,6 +56,11 @@ export const AboutMe = () => {
                     </div>
                 )}
             </div>
+
+            {/* Status Bar section */}
+            <WindowStatusBar>
+                <span>{currentWordCount} words</span>
+            </WindowStatusBar>
         </div>
     );
 };
