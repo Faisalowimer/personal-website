@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
+import { WIN95_ICONS } from '@/config/icons';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { useResumeStore } from '@/store/useResumeStore';
@@ -41,7 +42,7 @@ export const Resume = () => {
         <div className="flex flex-col h-full text-xs">
             {/* Header section*/}
             <WindowHeader
-                icon="/icons/resume.png"
+                icon={WIN95_ICONS.resume}
                 title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.name} Resume`}
                 actions={
                     <Win95Button

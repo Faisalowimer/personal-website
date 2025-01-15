@@ -1,5 +1,6 @@
 import { Win95Button } from '@/components/ui/Win95Button';
 import { ContactForm } from './ContactForm';
+import { WIN95_ICONS } from '@/config/icons';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { faisalContact } from '@/utils/contactUtils';
@@ -27,7 +28,7 @@ export const Contact = () => {
 
             {/* Header section */}
             <WindowHeader
-                icon="/icons/mail.png"
+                icon={WIN95_ICONS.contact}
                 title="New Message"
                 actions={
                     <button

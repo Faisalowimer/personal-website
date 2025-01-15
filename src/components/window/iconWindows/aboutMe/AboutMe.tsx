@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
+import { WIN95_ICONS } from '@/config/icons';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
+import { WindowStatusBar } from '@/components/window/WindowStatusBar';
 import { ABOUT_ME_SECTIONS, TabType, TABS } from '@/components/window/iconWindows/aboutMe/config';
-import { WindowStatusBar } from '../../WindowStatusBar';
 
 export const AboutMe = () => {
     const [activeTab, setActiveTab] = useState<TabType>('personal');
@@ -20,7 +21,7 @@ export const AboutMe = () => {
         <div className="flex flex-col h-full font-mono text-xs">
             {/* Header section */}
             <WindowHeader
-                icon="/icons/about.png"
+                icon={WIN95_ICONS.about}
                 title="Personal Story Overview"
             />
 

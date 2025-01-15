@@ -18,7 +18,7 @@ interface WindowProps {
 }
 
 export const WindowContainer = ({ window, position }: WindowProps) => {
-    const { closeWindow, setActiveWindow } = useWindowStore();
+    const { closeWindow, setActiveWindow, minimizeWindow } = useWindowStore();
     const [isMaximized, setIsMaximized] = useState(false);
     const [previousPosition, setPreviousPosition] = useState<Position | null>(null);
 
@@ -37,6 +37,11 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
             setPreviousPosition({ x: position?.x || 100, y: position?.y || 100 });
         }
         setIsMaximized(!isMaximized);
+    };
+
+    const handleMinimizeClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        minimizeWindow(window.id);
     };
 
     const renderContent = () => {
@@ -73,6 +78,9 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
         zIndex: window.zIndex,
     } as const;
 
+    // Skip rendering if window is minimized
+    if (window.isMinimized) return null;
+
     return (
         <div
             onClick={handleWindowClick}
@@ -90,6 +98,12 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
             <div className={`px-2 py-1 flex justify-between items-center ${window.isActive ? 'bg-[#000080] text-white' : 'bg-[#808080] text-[#c0c0c0]'}`}>
                 <span className="font-bold ml-1">{window.title}</span>
                 <div className="flex gap-1">
+                    <button
+                        onClick={handleMinimizeClick}
+                        className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
+                    >
+                        _
+                    </button>
                     <button
                         onClick={handleMaximizeClick}
                         className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PROJECTS } from '@/components/window/iconWindows/projects/config';
+import { WIN95_ICONS } from '@/config/icons';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { SortingButton } from '@/components/ui/sortingButton';
@@ -24,7 +25,7 @@ export const Projects = () => {
         <div className="flex flex-col h-full font-mono text-xs">
             {/* Header section */}
             <WindowHeader
-                icon="/icons/projects.png"
+                icon={WIN95_ICONS.projects}
                 title="Projects Explorer"
             />
 
