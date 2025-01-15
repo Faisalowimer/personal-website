@@ -1,8 +1,8 @@
-import { Resume } from './windows/resume/Resume';
-import { Contact } from './windows/contact/Contact';
-import { AboutMe } from './windows/aboutMe/AboutMe';
-import { Projects } from './windows/projects/Projects';
-import { TechStack } from './windows/techStack/TechStack';
+import { Resume } from './iconWindows/resume/Resume';
+import { Contact } from './iconWindows/contact/Contact';
+import { AboutMe } from './iconWindows/aboutMe/AboutMe';
+import { Projects } from './iconWindows/projects/Projects';
+import { TechStack } from './iconWindows/techStack/TechStack';
 import { useWindowStore } from '@/store/useWindowStore';
 import { Window as WindowType } from '@/store/useWindowStore';
 
@@ -16,7 +16,7 @@ interface WindowProps {
     position?: Position;
 }
 
-const Window = ({ window, position }: WindowProps) => {
+export const WindowContainer = ({ window, position }: WindowProps) => {
     const { closeWindow, setActiveWindow } = useWindowStore();
 
     const handleWindowClick = () => {
@@ -83,5 +83,3 @@ const Window = ({ window, position }: WindowProps) => {
         </div>
     );
 };
-
-export default Window; 

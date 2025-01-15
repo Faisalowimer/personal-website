@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
-import { ABOUT_ME_SECTIONS, TabType, TABS } from './config';
+import { ABOUT_ME_SECTIONS, TabType, TABS } from '@/components/window/iconWindows/aboutMe/config';
 import Image from 'next/image';
 
 export const AboutMe = () => {

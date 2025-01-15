@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { PROJECTS } from './config';
-import { ProjectDetails } from './ProjectDetails';
-import Image from 'next/image';
+import { PROJECTS } from '@/components/window/iconWindows/projects/config';
 import { Win95Button } from '@/components/ui/Win95Button';
+import { ProjectDetails } from '@/components/window/iconWindows/projects/ProjectDetails';
+import Image from 'next/image';
 
 type SortKey = 'date' | 'type';
 

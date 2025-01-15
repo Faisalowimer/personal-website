@@ -1,6 +1,6 @@
 import { Win95Button } from '@/components/ui/Win95Button';
+import { RESUME_DATA } from '@/components/window/iconWindows/resume/config';
 import Image from 'next/image';
-import { RESUME_DATA } from './config';
 
 interface CertificateDetailsProps {
     certificateId: string;
