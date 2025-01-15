@@ -37,7 +37,7 @@ export interface Certificate {
 export interface ResumeData {
     name: string;
     title: string;
-    summary: string;
+    summary?: string;
     contact: {
         email: string;
         phone: string;

@@ -33,7 +33,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 {/* Project Images - Only show if images exist */}
                 {project.images && project.images.length > 0 && (
                     <div className="mb-6">
-                        <h3 className="text-sm font-bold mb-2 border-b border-gray-400">Screenshots</h3>
+                        <h3 className="text-sm font-bold mb-2 border-gray-400">Screenshots</h3>
                         <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-win95">
                             {project.images.map((image, index) => (
                                 <div
