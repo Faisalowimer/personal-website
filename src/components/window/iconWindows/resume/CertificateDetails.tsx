@@ -11,6 +11,8 @@ export const CertificateDetails = ({ certificateId, onClose }: CertificateDetail
     const certificate = RESUME_DATA.certificates.find(c => c.id === certificateId);
     if (!certificate) return null;
 
+    const shouldShowName = certificate.title !== certificate.name;
+
     return (
         <div className="flex flex-col h-full font-mono text-xs">
             {/* Header */}
@@ -51,8 +53,15 @@ export const CertificateDetails = ({ certificateId, onClose }: CertificateDetail
                         <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
                             <span className="text-gray-600">Title:</span>
                             <span>{certificate.title}</span>
+                            {shouldShowName && (
+                                <>
+                                    <span className="text-gray-600">Name:</span>
+                                    <span>{certificate.name}</span>
+                                </>
+                            )}
                             <span className="text-gray-600">Issuer:</span>
-                            <span>{certificate.issuer}</span>
+                            <span className="hover:underline cursor-pointer" onClick={() => certificate.url && window.open(certificate.url, '_blank')}>
+                                {certificate.issuer}</span>
                             <span className="text-gray-600">Date:</span>
                             <span>{certificate.date}</span>
                             <span className="text-gray-600">Type:</span>
