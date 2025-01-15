@@ -4,7 +4,7 @@ import { faisalContact } from '@/utils/contactUtils';
 export const RESUME_DATA: ResumeData = {
     name: "Faisal Owimer",
     title: "Full Stack Software Engineer",
-    summary: "Experienced software engineer with a passion for building innovative web applications and solving complex problems.", // TODO: Add summary
+    summary: "Experienced software engineer with a passion for building innovative web applications and solving complex problems.", // TODO Add summary
     contact: {
         email: faisalContact.Email,
         phone: faisalContact.Phone,

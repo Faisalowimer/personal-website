@@ -39,6 +39,7 @@ export const Resume = () => {
 
     return (
         <div className="flex flex-col h-full text-xs">
+            {/* Header section*/}
             <WindowHeader
                 icon="/icons/resume.png"
                 title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.name} Resume`}
@@ -51,6 +52,7 @@ export const Resume = () => {
                 }
             />
 
+            {/* Toolbar section */}
             <WindowToolbar>
                 <Win95Button
                     active={viewMode === 'resume'}
@@ -94,6 +96,7 @@ export const Resume = () => {
                 )}
             </div>
 
+            {/* Status Bar section */}
             <WindowStatusBar>
                 <div className={`${error ? 'text-red-600' : ''} ${isUsingLocalData ? 'text-yellow-600' : ''}`}>
                     {getStatusMessage()}

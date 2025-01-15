@@ -28,7 +28,8 @@ export const SummarySection = ({ data }: SummarySectionProps) => {
                 </div>
             </div>
 
-            <p className="text-gray-700 mb-3">{data.summary}</p>
+            {/* TODO: Add general summary */}
+            {/* <p className="text-gray-700 mb-3">{data.summary}</p> */}
 
             {/* Social Links */}
             <div>
