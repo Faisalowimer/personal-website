@@ -1,24 +1,18 @@
 import { DriveItem } from '@/components/window/iconWindows/techStack/DriveItem';
+import { WindowHeader } from '../../WindowHeader';
 import { PerformanceBar } from '@/components/window/iconWindows/techStack/PerformanceBar';
 import { TECH_SKILLS, PERFORMANCE_METRICS } from '@/components/window/iconWindows/techStack/config';
-import Image from 'next/image';
 
 export const TechStack = () => {
     const showProficiency = false; // Toggle this to show/hide proficiency
 
     return (
         <div className="flex flex-col h-full font-mono text-xs">
-            {/* Header */}
-            <div className="flex items-center gap-2 p-2  border-b border-gray-400">
-                <Image
-                    src="/icons/computer.png"
-                    alt="Tech Stack"
-                    width={16}
-                    height={16}
-                    className="w-4 h-4"
-                />
-                <span className="text-sm font-bold">Tech Stack Overview</span>
-            </div>
+            {/* Header section */}
+            <WindowHeader
+                icon="/icons/computer.png"
+                title="Tech Stack Overview"
+            />
 
             {/* Content */}
             <div className="flex-1 p-4 overflow-auto">
