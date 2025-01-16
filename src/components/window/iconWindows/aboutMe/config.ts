@@ -17,7 +17,7 @@ Hello, I'm Faisal.
         <p>A Palestinian born in the middle of the desert in Saudi Arabia, where my first introduction to technology came through a <strong>Windows 95 desktop</strong>. Seeing words appear on a screen, playing games, and talking to my friends through a machine felt like witchcraft, something magical yet terrifying.
         <p>From that moment, I was fascinated by technology but also <strong>intimidated</strong> by it. I thought, <strong>"I could never build something like this."</strong>
         <h3 class="text-base font-bold border-b border-gray-400">A Journey of Unexpected Turns...</h3>
-Despite my interest in tech, my early ambitions were far from coding. I actually wanted to become a <strong>sergeant</strong> (thankfully, that never happened, because I would have been <strong>miserable</strong>). Instead, I pursued <strong>business school</strong>, eager to learn how to lead, build, and operate companies.
+Despite my interest in tech, my early ambitions were far from coding. I actually wanted to become a <strong>surgeon</strong> (thankfully, that never happened, because I would have been <strong>miserable</strong>). Instead, I pursued <strong>business school</strong>, eager to learn how to lead, build, and operate companies.
         <p>During business school, life had other plans. I was diagnosed with Crohn's disease at a young age, a challenge that shaped my resilience and perspective. I developed a deep appreciation for the simpler things in life, which made me more humble and compassionate.
         <p>Coming from a <strong>family business</strong>, I saw firsthand what it took to be an entrepreneur. After business school, I considered joining <strong>consulting</strong> in one of the Big Four, but luckily, I didn't because I would have been <strong>miserable</strong>.
         <p>Instead, I joined the family business, gaining real-world experience. But something inside me always pushed me further. I had a deep feeling that I was meant to do <strong>something bigger</strong>, something that wasn't possible in my current environment.
@@ -62,42 +62,73 @@ With <strong>AI</strong> changing the world, I couldn't just watch from the side
             <li><strong>This is what I was meant to do</strong>
             <li><strong>I want to spend my life building things that solve real-world problems</strong>
         <h3 class="text-base font-bold border-b border-gray-400">Full Circle – The Windows 95 Tribute...</h3>
-As I built my personal website, I wanted to pay tribute to where it all began—<strong>Windows 95</strong>.
-        <p>The operating system that first made me fall in love with technology...The computer screen that once <strong>intimidated</strong> me...<br/>Now, here I am.
+As I built my personal website, I wanted to pay tribute to where it all began—<strong>Windows 95</strong>. How I didn't understand technology (and still don't) but I was fascinated by it and now able to build things with it.
+        <p>The operating system that first made me fall in love with technology...The computer screen that once <strong>intimidated</strong> me...Now, here I am:
             <li><strong>Building apps</strong>
             <li><strong>Solving problems</strong>
-            <li><strong>Living my dream in New York City</strong>
+            <li><strong>Living my dream in New York City with clear purpose</strong>
     </div>`,
 
-    journey: `📌 **Professional Journey**
+    journey:
 
-🚀 **Current Focus**  
-• Full Stack Development with Next.js and TypeScript  
-• AI-powered applications & automation  
-• Building scalable web applications  
+        `Riyadh, SA  
+-----------
+1995 – Born into this world  
+|
+|
+|
+2000 - Early interaction with computers (Windows 95 magic)  
+|
+|
+|
+2007 - Dreamed of living and working in NYC and decided I must pursue my dream (Life-changing decision)  
+|
+|
+|
+2012 - Graduated high school  
+|
+2013 - Failed to join med school, thank god, and decided to join business school (Life-changing decision)  
+2013 - Diagnosed with Crohn's disease (Life-changing event)  
+|
+|
+|
+2016 - Graduated from business school  
 
-📍 **Career Timeline**  
+Amman, Jordan  
+-------------
+2016 - Underwent Crohn’s disease surgery (Life-changing event)  
 
-📌 **2015 - First Line of Code**  
-Wrote my first "Hello, World!" and thought I was hacking the planet.  
+Riyadh, SA  
+-----------
+2017 - Failed to join the big four, thank god, and decided to join the family business (Life-changing decision)  
+|
+2018 - Quit the family business to continue my education in the US (Life-changing decision)  
 
-📌 **2017 - Built My First Full App**  
-Created a web app to [describe fun or meaningful early project].  
+Boston, MA  
+----------
+2019 - Finished first master's degree in International Business  
+|
+2020 - Finished second master's degree in Finance  
+2020 - COVID happened → A lot of soul-searching, self-reflection, and many Warzone wins
+2020 - Failed to join investment banking, thank god, and decided to join a newly founded fintech startup (Life-changing decision)  
 
-📌 **2019 - Entering the Business World**  
-Gained business experience through [consulting, family business, etc.].  
+Newport Beach, CA  
+-----------------
+2021 - Filed for asylum immigration (Life-changing decision)  
+2021 - Doordashing, Ubering, and working at fintech startups to make ends meet  
 
-📌 **2021 - Startup & Fintech**  
-Joined a fintech startup as the **first employee**, leading business operations.  
-
-📌 **2022 - Moved to NYC**  
-Finally made it to **New York City** to pursue **tech and entrepreneurship**.  
-
-📌 **2023 - Committing to Tech**  
-Joined a **full-stack bootcamp** and fully transitioned into software development.  
-
-📌 **2024 - AI, Automation & Full-Stack**  
-Now focused on **building real-world applications and AI-driven tools**.`,
+New York, NY  
+------------
+2022 - Moved to NYC (Life-changing decision)  
+2022 - Found love in the city of love with my soon to be wife (Life-changing event)  
+|
+2023 - Got engaged   
+2023 - Launched Ihsan MVP with a dev agency, wasn't very satisfied with the outcome but it was the best I could do at the time
+|
+2024 - Got married, left my job, joined Fractal bootcamp (Life-changing decision)  
+|
+2025 - Ready to build and work with AI agents as a software engineer
+    `,
 
     interests: `🎯 **Interests & Hobbies**
 
