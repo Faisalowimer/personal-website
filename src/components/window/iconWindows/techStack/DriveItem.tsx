@@ -10,7 +10,7 @@ interface DriveItemProps {
 }
 
 export const DriveItem = ({ label, icon, usedSpace, totalSpace, className = '' }: DriveItemProps) => (
-    <div className={`flex items-start gap-2 p-1.5 hover:bg-[#000080]/10 cursor-pointer ${className}`}>
+    <div className={`flex items-start gap-2 p-1.5 cursor-pointer ${className}`}>
         <Image
             src={icon}
             alt={label}

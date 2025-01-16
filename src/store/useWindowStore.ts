@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { WIN95_ICONS } from '@/config/icons';
 
 export interface Position {
     x: number;
@@ -40,6 +39,15 @@ interface WindowStore {
     restoreWindow: (id: string) => void;
 }
 
+export const WIN95_ICONS = {
+    computer: '/icons/computer.png',
+    about: '/icons/about.png',
+    projects: '/icons/projects.png',
+    resume: '/icons/resume.png',
+    contact: '/icons/contact.png',
+    start: '/icons/windows_95_logo.png'
+} as const;
+
 const DEFAULT_WINDOWS: Window[] = [
     {
         id: 'computer',
@@ -50,7 +58,7 @@ const DEFAULT_WINDOWS: Window[] = [
         component: 'techstack',
         order: 0,
         position: { x: 20, y: 20 },
-        windowPosition: { x: 120, y: 30 },
+        windowPosition: { x: 120, y: 10 },
         zIndex: 0,
         icon: WIN95_ICONS.computer
     },
@@ -63,7 +71,7 @@ const DEFAULT_WINDOWS: Window[] = [
         component: 'about',
         order: 1,
         position: { x: 20, y: 130 },
-        windowPosition: { x: 180, y: 130 },
+        windowPosition: { x: 120, y: 90 },
         zIndex: 0,
         icon: WIN95_ICONS.about
     },
@@ -76,7 +84,7 @@ const DEFAULT_WINDOWS: Window[] = [
         component: 'projects',
         order: 2,
         position: { x: 20, y: 220 },
-        windowPosition: { x: 260, y: 230 },
+        windowPosition: { x: 120, y: 170 },
         zIndex: 0,
         icon: WIN95_ICONS.projects
     },
@@ -89,7 +97,7 @@ const DEFAULT_WINDOWS: Window[] = [
         component: 'resume',
         order: 3,
         position: { x: 20, y: 320 },
-        windowPosition: { x: 340, y: 330 },
+        windowPosition: { x: 120, y: 250 },
         zIndex: 0,
         icon: WIN95_ICONS.resume
     },
@@ -102,7 +110,7 @@ const DEFAULT_WINDOWS: Window[] = [
         component: 'contact',
         order: 4,
         position: { x: 20, y: 420 },
-        windowPosition: { x: 420, y: 430 },
+        windowPosition: { x: 120, y: 330 },
         zIndex: 0,
         icon: WIN95_ICONS.contact
     }

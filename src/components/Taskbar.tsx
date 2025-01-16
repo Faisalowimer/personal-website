@@ -1,8 +1,7 @@
-import { WIN95_ICONS } from '@/config/icons';
 import { Win95Button } from './ui/Win95Button';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { useWindowStore } from '@/store/useWindowStore';
+import { useWindowStore, WIN95_ICONS } from '@/store/useWindowStore';
+import Image from 'next/image';
 
 export const Taskbar = () => {
     const { windows, setActiveWindow, restoreWindow } = useWindowStore();
