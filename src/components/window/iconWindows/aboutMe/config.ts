@@ -1,18 +1,18 @@
 type AboutMeSections = {
-    [key: string]: string;
+        [key: string]: string;
 };
 
-export type TabType = 'personal' | 'journey' | 'interests' | 'education';
+export type TabType = 'personal' | 'journey' | 'interests' | 'principles';
 
 export const TABS: { id: TabType; label: string }[] = [
-    { id: 'personal', label: 'Story' },
-    { id: 'journey', label: 'Journey' },
-    { id: 'interests', label: 'Interests' },
-    { id: 'education', label: 'Education' },
+        { id: 'personal', label: 'Story' },
+        { id: 'journey', label: 'Journey' },
+        { id: 'interests', label: 'Interests' },
+        { id: 'principles', label: 'Principles' },
 ];
 
 export const ABOUT_ME_SECTIONS: AboutMeSections = {
-    personal: `<div>
+        personal: `<div>
 Hello, I'm Faisal.
         <p>A Palestinian born in the middle of the desert in Saudi Arabia, where my first introduction to technology came through a <strong>Windows 95 desktop</strong>. Seeing words appear on a screen, playing games, and talking to my friends through a machine felt like witchcraft, something magical yet terrifying.
         <p>From that moment, I was fascinated by technology but also <strong>intimidated</strong> by it. I thought, <strong>"I could never build something like this."</strong>
@@ -69,9 +69,9 @@ As I built my personal website, I wanted to pay tribute to where it all began—
             <li><strong>Living my dream in New York City with clear purpose</strong>
     </div>`,
 
-    journey:
+        journey:
 
-        `Riyadh, SA  
+                `Riyadh, SA  
 -----------
 1995 – Born into this world  
 |
@@ -130,7 +130,7 @@ New York, NY
 2025 - Ready to build and work with AI agents as a software engineer
     `,
 
-    interests: `<h3 class="text-base font-bold">Interests & Hobbies</h3>|
+        interests: `<h3 class="text-base font-bold">Interests & Hobbies</h3>|
 ├── <strong>Creativity</strong>  
 │   ├── Cooking - Tasting the world through food and flavors  
 │   ├── Fashion - Expressing identity through style  
@@ -149,7 +149,32 @@ New York, NY
 │   ├── Movies & Shows - Recently acquired taste for science fiction  
 │   ├── Traveling - Exploring cultures, histories, and flavors
 │   `
-    ,
-
-    education: `❌ **(This section is removed to avoid redundancy with resume.)**`
+        ,
+        principles: `<h3 class="text-base font-bold">Principles I live by and shapes me everyday...</h3>
+├── "Believe in god, yourself, and have faith."  
+|
+├── "Choose how you want to live your life and avoid non existent mental barriers."  
+|
+├── "Learn from yesterday, plan for tomorrow, and live in the present because it’s the only moment that matters."  
+|
+├── "The best time to start something was yesterday."  
+|
+├── "Don't delay today's work to tomorrow."  
+|
+├── "Always start with 'What is the worst that can happen?' If I can afford it… I just do it."  
+|
+├── "Nothing is easy, nothing is hard. Put the work in and you will see the results."  
+|
+├── "Partner well in life and business. Your wife and your team will shape your future whether you like it or not."  
+|
+├── "Whatever most people do, I do the opposite." 
+|
+├── "In most cases, the last thing I could care about is what people think." 
+|
+├── "Never been, never will be a kiss-ass."  
+|
+├── "Never did, never will do corporate jargon language." 
+|
+ 
+`,
 };
