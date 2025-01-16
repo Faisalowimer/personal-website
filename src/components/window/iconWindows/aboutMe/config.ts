@@ -130,25 +130,26 @@ New York, NY
 2025 - Ready to build and work with AI agents as a software engineer
     `,
 
-    interests: `🎯 **Interests & Hobbies**
-
-🖥 **Tech Interests**  
-• AI & Machine Learning 🤖  
-• Web Development & Modern Frameworks 🌍  
-• Open Source Contributions 💡  
-• System Architecture & Design 🏗️  
-
-🎮 **Gaming & Fun Stuff**  
-• Strategy games (Chess, Starcraft, Factorio)  
-• Classic retro games (because, well… Windows 95)  
-
-📚 **Reading & Learning**  
-• AI research papers & dev blogs  
-• Books on system design & efficiency  
-
-☕ **Coding Rituals**  
-• 2AM deep-dive coding sessions fueled by coffee  
-• Breaking things to learn how to fix them 🤡`,
+    interests: `<h3 class="text-base font-bold">Interests & Hobbies</h3>|
+├── <strong>Creativity</strong>  
+│   ├── Cooking - Tasting the world through food and flavors  
+│   ├── Fashion - Expressing identity through style  
+│   ├── Design - A taste for the simpler things in life  
+│   ├── Coding - Newest obsession, where anything is possible
+│  
+├── <strong>Physical</strong>  
+│   ├── Working Out - Strength, endurance, and discipline  
+│   ├── Soccer - Favorite sport to watch and play  
+│   ├── Ping Pong - Quick reflexes, fast decisions  
+│   ├── Learning Ancient Skills - Understanding lost arts and old crafts
+│   
+├── <strong>Entertainment, Learning & Exploration</strong>  
+│   ├── Documentaries - Deep dives into history, psychology, and business  
+│   ├── Readings - interest in learning history, philosophy, and religion  
+│   ├── Movies & Shows - Recently acquired taste for science fiction  
+│   ├── Traveling - Exploring cultures, histories, and flavors
+│   `
+    ,
 
     education: `❌ **(This section is removed to avoid redundancy with resume.)**`
 };
