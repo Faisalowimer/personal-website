@@ -2,7 +2,7 @@ import { Taskbar } from '@/components/Taskbar';
 import { Loading } from '@/components/Loading';
 import { DesktopIcon } from '@/components/DesktopIcon';
 import { Win95Button } from '@/components/ui/Win95Button';
-import { WIN95_ICONS } from '@/config/icons';
+import { WIN95_ICONS } from '@/store/useWindowStore';
 import { useWindowStore } from '@/store/useWindowStore';
 import { WindowContainer } from '@/components/window/WindowContainer';
 import { useEffect, useRef, useState } from 'react';

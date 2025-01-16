@@ -1,3 +1,10 @@
+interface TechSummaryData {
+    experience: string;
+    interests: string;
+    learning: string;
+    status: string;
+}
+
 interface DriveItemData {
     label: string;
     icon: string;
@@ -8,6 +15,14 @@ interface DriveItemData {
 interface PerformanceMetric {
     label: string;
     value: number;
+    category: 'technical' | 'soft';
+}
+
+export const TECH_SUMMARY: TechSummaryData = {
+    experience: "Full Stack Software Engineer",
+    interests: "AI agents, Web Development, SaaS",
+    learning: "How to utilize AI agents to move humanity forward and be more lazy",
+    status: "Available for opportunities that interest my curiosity and passion in the AI space"
 }
 
 export const TECH_SKILLS: DriveItemData[] = [
@@ -19,7 +34,7 @@ export const TECH_SKILLS: DriveItemData[] = [
     },
     {
         label: "Backend Development (D:)",
-        icon: "/icons/drive.png",
+        icon: "/icons/backend.png",
         totalSpace: "Node.js, Express, Next.js",
         usedSpace: "85%"
     },
@@ -31,65 +46,113 @@ export const TECH_SKILLS: DriveItemData[] = [
     },
     {
         label: "Databases (F:)",
-        icon: "/icons/drive.png",
+        icon: "/icons/database.png",
         totalSpace: "PostgreSQL, Prisma, MongoDB, Redis",
         usedSpace: "80%"
     },
     {
-        label: "Authentication & Security (G:)",
-        icon: "/icons/password_generator.png",
+        label: "Security & Authentication (G:)",
+        icon: "/icons/auth.png",
         totalSpace: "Clerk, Firebase",
         usedSpace: "85%"
     },
     {
-        label: "Cloud & DevOps (H:)",
-        icon: "/icons/drive.png",
+        label: "Cloud & Infrastructure (H:)",
+        icon: "/icons/api.png",
         totalSpace: "AWS, Docker, CI/CD",
         usedSpace: "75%"
     },
     {
         label: "Testing & Quality (I:)",
-        icon: "/icons/drive.png",
+        icon: "/icons/testing.png",
         totalSpace: "Puppeteer, Vitest, Storybook",
         usedSpace: "80%"
     },
     {
         label: "Version Control (J:)",
-        icon: "/icons/drive.png",
+        icon: "/icons/version_control.png",
         totalSpace: "Git, GitHub",
         usedSpace: "95%"
     },
     {
         label: "Languages & Libraries (K:)",
-        icon: "/icons/drive.png",
+        icon: "/icons/library.png",
         totalSpace: "Typescript, Shadcn, FramerMotion, Zod, TanStack, MagicUI, Lucid, Pangea, Resend, Sendgrid",
         usedSpace: "88%"
     },
 ];
 
 export const PERFORMANCE_METRICS: PerformanceMetric[] = [
+    // Technical Skills
     {
-        label: "Problem Solving",
-        value: 99.99
+        label: "Problem Solving & Critical Thinking",
+        value: 99.99,
+        category: 'technical'
     },
     {
-        label: "Team Collaboration",
-        value: 99.99
+        label: "Data Structures & System Design",
+        value: 99.99,
+        category: 'technical'
     },
     {
-        label: "Learning Speed",
-        value: 99.99
+        label: "Object-Oriented Programming",
+        value: 99.99,
+        category: 'technical'
     },
     {
-        label: "Code Quality",
-        value: 99.99
+        label: "Database Management",
+        value: 99.99,
+        category: 'technical'
     },
     {
-        label: "System Design",
-        value: 99.99
+        label: "Code Quality & Best Practices",
+        value: 99.99,
+        category: 'technical'
     },
     {
-        label: "Documentation",
-        value: 99.99
-    }
+        label: "Testing & Debugging",
+        value: 99.99,
+        category: 'technical'
+    },
+    {
+        label: "UI/UX Design",
+        value: 99.99,
+        category: 'technical'
+    },
+    // Soft Skills
+    {
+        label: "Communication & Collaboration",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Adaptability & Flexibility",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Time Management & Organization",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Research & Strategic Analysis",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Project Management",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Knowledge Discovery & Learning",
+        value: 99.99,
+        category: 'soft'
+    },
+    {
+        label: "Patience & Dedication",
+        value: 99.99,
+        category: 'soft'
+    },
 ];

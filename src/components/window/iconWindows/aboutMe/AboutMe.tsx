@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
-import { WIN95_ICONS } from '@/config/icons';
+import { WIN95_ICONS } from '@/store/useWindowStore';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { WindowStatusBar } from '@/components/window/WindowStatusBar';

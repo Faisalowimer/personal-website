@@ -1,6 +1,6 @@
 import { Win95Button } from '@/components/ui/Win95Button';
 import { ContactForm } from './ContactForm';
-import { WIN95_ICONS } from '@/config/icons';
+import { WIN95_ICONS } from '@/store/useWindowStore';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { faisalContact } from '@/utils/contactUtils';

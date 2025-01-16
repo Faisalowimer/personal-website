@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Win95Button } from '@/components/ui/Win95Button';
-import { WIN95_ICONS } from '@/config/icons';
+import { WIN95_ICONS } from '@/store/useWindowStore';
 import { WindowHeader } from '@/components/window/WindowHeader';
 import { WindowToolbar } from '@/components/window/WindowToolbar';
 import { useResumeStore } from '@/store/useResumeStore';
@@ -46,7 +46,7 @@ export const Resume = () => {
                 title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.name} Resume`}
                 actions={
                     <Win95Button
-                        onClick={() => window.open('https://resume-faisalowimer.vercel.app', '_blank')}
+                        onClick={() => window.open('https://resume-faisal-owimer.vercel.app/', '_blank')}
                     >
                         View Original
                     </Win95Button>
