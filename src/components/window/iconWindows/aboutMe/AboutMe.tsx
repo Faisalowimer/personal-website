@@ -11,7 +11,9 @@ export const AboutMe = () => {
 
     // Function to count words in a string
     const getWordCount = (text: string): number => {
-        return text.trim().split(/\s+/).length;
+        // Remove HTML tags and decode HTML entities
+        const strippedText = text.replace(/<[^>]*>/g, ' ').replace(/&[^;]+;/g, ' ');
+        return strippedText.trim().split(/\s+/).length;
     };
 
     // Get word count for current tab
@@ -42,19 +44,21 @@ export const AboutMe = () => {
             <div className="flex-1 p-4 overflow-auto">
                 {activeTab === 'personal' ? (
                     <div className="relative">
-                        <div className="float-right ml-6 mb-4">
+                        <div className="float-right ml-6 mb-2">
                             <div className="w-48 h-48 border-2 border-gray-400 bg-gray-100 flex items-center justify-center shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]">
                                 <span className="text-gray-400">Profile Picture</span>
                             </div>
                         </div>
-                        <div className="text-sm whitespace-pre-wrap">
-                            {ABOUT_ME_SECTIONS[activeTab]}
-                        </div>
+                        <div
+                            className="text-sm whitespace-pre-wrap"
+                            dangerouslySetInnerHTML={{ __html: ABOUT_ME_SECTIONS[activeTab] }}
+                        />
                     </div>
                 ) : (
-                    <div className="text-sm whitespace-pre-wrap">
-                        {ABOUT_ME_SECTIONS[activeTab]}
-                    </div>
+                    <div
+                        className="text-sm whitespace-pre-wrap"
+                        dangerouslySetInnerHTML={{ __html: ABOUT_ME_SECTIONS[activeTab] }}
+                    />
                 )}
             </div>
 
