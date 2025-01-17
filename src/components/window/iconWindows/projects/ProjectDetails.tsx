@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { PROJECTS } from './config';
 import { Win95Button } from '@/components/ui/Win95Button';
 import Image from 'next/image';
+import { Modal } from '@/components/ui/Modal';
 
 interface ProjectDetailsProps {
     projectId: string;
@@ -8,8 +10,22 @@ interface ProjectDetailsProps {
 }
 
 export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
+    const [modalContent, setModalContent] = useState<{ type: 'image' | 'link', content: string, imageIndex?: number } | null>(null);
+
     const project = PROJECTS.find(p => p.id === projectId);
     if (!project) return null;
+
+    const handleImageClick = (index: number) => {
+        setModalContent({
+            type: 'image',
+            content: project.images[index],
+            imageIndex: index
+        });
+    };
+
+    const handleLinkClick = (link: string) => {
+        setModalContent({ type: 'link', content: link });
+    };
 
     return (
         <div className="flex flex-col h-full font-mono text-xs">
@@ -38,7 +54,8 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                             {project.images.map((image, index) => (
                                 <div
                                     key={index}
-                                    className="flex-shrink-0 border-2 border-gray-400 bg-gray-100 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]"
+                                    className="flex-shrink-0 border-2 border-gray-400 bg-gray-100 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf] cursor-pointer"
+                                    onClick={() => handleImageClick(index)}
                                 >
                                     <Image
                                         src={image}
@@ -54,7 +71,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                 )}
 
                 {/* Project Info */}
-                <div className="grid gap-6">
+                <div className="grid gap-4">
                     {/* Description */}
                     <div>
                         <h3 className="text-sm font-bold mb-2 border-b border-gray-400">Description</h3>
@@ -82,7 +99,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                         <p className="mb-2 font-semibold">{project.role}</p>
                         <ul className="list-disc pl-4">
                             {project.contributions.map((contribution, index) => (
-                                <li key={index}>{contribution}</li>
+                                <li key={index} className="mb-2">{contribution}</li>
                             ))}
                         </ul>
                     </div>
@@ -90,19 +107,19 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                     {/* Links */}
                     <div>
                         <h3 className="text-sm font-bold mb-2 border-b border-gray-400">Links</h3>
-                        <div className="flex gap-4">
+                        <div className="flex gap-2">
                             {project.links.live && (
-                                <Win95Button onClick={() => window.open(project.links.live, '_blank')}>
+                                <Win95Button onClick={() => handleLinkClick(project.links.live!)}>
                                     Live Site
                                 </Win95Button>
                             )}
                             {project.links.demo && (
-                                <Win95Button onClick={() => window.open(project.links.demo, '_blank')}>
+                                <Win95Button onClick={() => handleLinkClick(project.links.demo!)}>
                                     Demo
                                 </Win95Button>
                             )}
                             {project.links.github && (
-                                <Win95Button onClick={() => window.open(project.links.github, '_blank')}>
+                                <Win95Button onClick={() => handleLinkClick(project.links.github!)}>
                                     GitHub
                                 </Win95Button>
                             )}
@@ -110,6 +127,17 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                     </div>
                 </div>
             </div>
+
+            {/* Modal */}
+            <Modal
+                isOpen={modalContent !== null}
+                onClose={() => setModalContent(null)}
+                type={modalContent?.type || 'image'}
+                content={modalContent?.content || ''}
+                title={project.title}
+                images={modalContent?.type === 'image' ? project.images : undefined}
+                currentImageIndex={modalContent?.imageIndex}
+            />
         </div>
     );
 };

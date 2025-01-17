@@ -1,9 +1,6 @@
-import { Win95Button } from '@/components/ui/Win95Button';
 import { ContactForm } from './ContactForm';
 import { WIN95_ICONS } from '@/store/useWindowStore';
 import { WindowHeader } from '@/components/window/WindowHeader';
-import { WindowToolbar } from '@/components/window/WindowToolbar';
-import { faisalContact } from '@/utils/contactUtils';
 import { WindowStatusBar } from '@/components/window/WindowStatusBar';
 import { useContactStore } from '@/store/useContactStore';
 import ReactConfetti from 'react-confetti';
@@ -41,20 +38,6 @@ export const Contact = () => {
                     </button>
                 }
             />
-
-            {/* Toolbar section */}
-            <WindowToolbar>
-                <Win95Button
-                    onClick={() => window.open(faisalContact.LinkedIn, '_blank')}
-                >
-                    LinkedIn
-                </Win95Button>
-                <Win95Button
-                    onClick={() => window.open(faisalContact.GitHub, '_blank')}
-                >
-                    GitHub
-                </Win95Button>
-            </WindowToolbar>
 
             {/* Content section - Contact form */}
             <div className="flex-1 p-4 overflow-auto">

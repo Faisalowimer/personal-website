@@ -4,9 +4,10 @@ import { useWindowStore } from '@/store/useWindowStore';
 
 interface SummarySectionProps {
     data: ResumeData;
+    onLinkClick: (link: string) => void;
 }
 
-export const SummarySection = ({ data }: SummarySectionProps) => {
+export const SummarySection = ({ data, onLinkClick }: SummarySectionProps) => {
     const { openWindow } = useWindowStore();
 
     return (
@@ -34,17 +35,17 @@ export const SummarySection = ({ data }: SummarySectionProps) => {
             {/* Social Links */}
             <div>
                 {data.contact.linkedin && (
-                    <Win95Button onClick={() => window.open(data.contact.linkedin, '_blank')}>
+                    <Win95Button onClick={() => onLinkClick(data.contact.linkedin!)}>
                         LinkedIn
                     </Win95Button>
                 )}
                 {data.contact.github && (
-                    <Win95Button onClick={() => window.open(data.contact.github, '_blank')}>
+                    <Win95Button onClick={() => onLinkClick(data.contact.github!)}>
                         GitHub
                     </Win95Button>
                 )}
                 {data.contact.portfolio && (
-                    <Win95Button onClick={() => window.open(data.contact.portfolio, '_blank')}>
+                    <Win95Button onClick={() => onLinkClick(data.contact.portfolio!)}>
                         Portfolio
                     </Win95Button>
                 )}
