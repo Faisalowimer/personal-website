@@ -7,6 +7,7 @@ import Image from 'next/image';
 interface CertificatesSectionProps {
     certificates: Certificate[];
     onSelect: (id: string) => void;
+    onLinkClick: (url: string) => void;
 }
 
 export const CertificatesSection = ({ certificates, onSelect }: CertificatesSectionProps) => {

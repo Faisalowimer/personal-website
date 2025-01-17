@@ -2,6 +2,7 @@ import { Education } from '@/components/window/iconWindows/resume/types';
 
 interface EducationSectionProps {
     education: Education[];
+    onLinkClick: (link: string) => void;
 }
 
 export const EducationSection = ({ education }: EducationSectionProps) => {

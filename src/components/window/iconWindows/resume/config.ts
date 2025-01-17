@@ -34,7 +34,7 @@ export const RESUME_DATA: ResumeData = {
             jobSummary: "Transitioned to full-stack development, building production-ready applications through intensive bootcamp training in frontend and backend technologies.",
             date: "Sep 2024 – Present",
             points: [
-                "Developed a range of applications using TypeScript, Next.js, Vite, React, TanStack, Zod, MagicUI, Firebase, Express, OpenAI, Vercel, Netlify, and AWS",
+                "Developed a range of applications using TypeScript, Next.js, Vite, React, TanStack, Zod, MagicUI, Firebase, Express, WebSockets, OpenAI, Vercel, Netlify, and AWS",
                 "Automated data scraping, browser workflows, and UI testing with Puppeteer, Storybook, and Vitest for data aggregation, insights, and reducing manual QA",
             ]
         },

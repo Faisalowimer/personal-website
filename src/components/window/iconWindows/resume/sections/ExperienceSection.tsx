@@ -2,9 +2,10 @@ import { Experience } from '@/components/window/iconWindows/resume/types';
 
 interface ExperienceSectionProps {
     experiences: Experience[];
+    onLinkClick: (url: string) => void;
 }
 
-export const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
+export const ExperienceSection = ({ experiences, onLinkClick }: ExperienceSectionProps) => {
     return (
         <div className="mb-6">
             <h3 className="text-sm font-bold mb-3 border-b border-gray-400">Experience</h3>
@@ -15,7 +16,7 @@ export const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                             <div>
                                 <span className="font-bold">{exp.title}</span>
                                 <span className="mx-2">@</span>
-                                <span className="hover:underline cursor-pointer" onClick={() => exp.companyUrl && window.open(exp.companyUrl, '_blank')}>
+                                <span className="hover:underline cursor-pointer" onClick={() => exp.companyUrl && onLinkClick(exp.companyUrl)}>
                                     {exp.company}
                                 </span>
                             </div>

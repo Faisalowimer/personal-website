@@ -35,7 +35,7 @@ export const TECH_SKILLS: DriveItemData[] = [
     {
         label: "Backend Development (D:)",
         icon: "/icons/backend.png",
-        totalSpace: "Node.js, Express, Next.js",
+        totalSpace: "Node.js, Express, Next.js, WebSockets",
         usedSpace: "85%"
     },
     {
@@ -77,7 +77,7 @@ export const TECH_SKILLS: DriveItemData[] = [
     {
         label: "Languages & Libraries (K:)",
         icon: "/icons/library.png",
-        totalSpace: "Typescript, Shadcn, FramerMotion, Zod, TanStack, MagicUI, Lucid, Pangea, Resend, Sendgrid",
+        totalSpace: "Typescript, Shadcn, FramerMotion, Zod, TanStack, MagicUI, Lucid, Pangea, Resend, Sendgrid, Socket.io",
         usedSpace: "88%"
     },
 ];

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Modal } from '@/components/ui/Modal';
 import { Win95Button } from '@/components/ui/Win95Button';
 import { WIN95_ICONS } from '@/store/useWindowStore';
 import { WindowHeader } from '@/components/window/WindowHeader';
@@ -11,6 +11,7 @@ import { EducationSection } from '@/components/window/iconWindows/resume/section
 import { ExperienceSection } from '@/components/window/iconWindows/resume/sections/ExperienceSection';
 import { CertificateDetails } from '@/components/window/iconWindows/resume/CertificateDetails';
 import { CertificatesSection } from '@/components/window/iconWindows/resume/sections/CertificatesSection';
+import { useEffect, useState } from 'react';
 
 export const Resume = () => {
     const {
@@ -26,9 +27,15 @@ export const Resume = () => {
         fetchResumeData
     } = useResumeStore();
 
+    const [modalContent, setModalContent] = useState<{ type: 'link', content: string } | null>(null);
+
     useEffect(() => {
         fetchResumeData();
     }, [fetchResumeData]);
+
+    const handleLinkClick = (link: string) => {
+        setModalContent({ type: 'link', content: link });
+    };
 
     const getStatusMessage = () => {
         if (loading) return 'Loading data...';
@@ -46,7 +53,7 @@ export const Resume = () => {
                 title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.name} Resume`}
                 actions={
                     <Win95Button
-                        onClick={() => window.open('https://resume-faisal-owimer.vercel.app/', '_blank')}
+                        onClick={() => handleLinkClick('https://resume-faisal-owimer.vercel.app/')}
                     >
                         View Original
                     </Win95Button>
@@ -81,18 +88,20 @@ export const Resume = () => {
                         <CertificateDetails
                             certificateId={selectedCertificate}
                             onClose={() => setSelectedCertificate(null)}
+                            onLinkClick={handleLinkClick}
                         />
                     ) : (
                         <CertificatesSection
                             certificates={resumeData.certificates}
                             onSelect={setSelectedCertificate}
+                            onLinkClick={handleLinkClick}
                         />
                     )
                 ) : (
                     <>
-                        <SummarySection data={resumeData} />
-                        <ExperienceSection experiences={resumeData.experience} />
-                        <EducationSection education={resumeData.education} />
+                        <SummarySection data={resumeData} onLinkClick={handleLinkClick} />
+                        <ExperienceSection experiences={resumeData.experience} onLinkClick={handleLinkClick} />
+                        <EducationSection education={resumeData.education} onLinkClick={handleLinkClick} />
                     </>
                 )}
             </div>
@@ -103,6 +112,15 @@ export const Resume = () => {
                     {getStatusMessage()}
                 </div>
             </WindowStatusBar>
+
+            {/* Modal for links */}
+            <Modal
+                isOpen={modalContent !== null}
+                onClose={() => setModalContent(null)}
+                type={modalContent?.type || 'link'}
+                content={modalContent?.content || ''}
+                title="External Link"
+            />
         </div>
     );
 };

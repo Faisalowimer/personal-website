@@ -5,9 +5,10 @@ import Image from 'next/image';
 interface CertificateDetailsProps {
     certificateId: string;
     onClose: () => void;
+    onLinkClick: (url: string) => void;
 }
 
-export const CertificateDetails = ({ certificateId, onClose }: CertificateDetailsProps) => {
+export const CertificateDetails = ({ certificateId, onClose, onLinkClick }: CertificateDetailsProps) => {
     const certificate = RESUME_DATA.certificates.find(c => c.id === certificateId);
     if (!certificate) return null;
 
@@ -60,7 +61,7 @@ export const CertificateDetails = ({ certificateId, onClose }: CertificateDetail
                                 </>
                             )}
                             <span className="text-gray-600">Issuer:</span>
-                            <span className="hover:underline cursor-pointer" onClick={() => certificate.url && window.open(certificate.url, '_blank')}>
+                            <span className="hover:underline cursor-pointer" onClick={() => certificate.url && onLinkClick(certificate.url)}>
                                 {certificate.issuer}</span>
                             <span className="text-gray-600">Date:</span>
                             <span>{certificate.date}</span>
