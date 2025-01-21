@@ -1,7 +1,6 @@
 import { Taskbar } from '@/components/Taskbar';
 import { Loading } from '@/components/Loading';
 import { DesktopIcon } from '@/components/DesktopIcon';
-import { Win95Button } from '@/components/ui/Win95Button';
 import { WIN95_ICONS } from '@/store/useWindowStore';
 import { useWindowStore } from '@/store/useWindowStore';
 import { WindowContainer } from '@/components/window/WindowContainer';
@@ -18,7 +17,6 @@ export const Desktop = () => {
         clearSelection,
         updateIconPosition,
         resetPositions,
-        clearStore
     } = useWindowStore();
 
     const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -83,23 +81,12 @@ export const Desktop = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [clearSelection]);
 
-    // Add development-only reset button
-    const isDevelopment = process.env.NODE_ENV === 'development';
-
     if (isLoading) {
         return <Loading onComplete={handleLoadingComplete} />;
     }
 
     return (
         <div className="min-h-screen bg-[#008080] relative overflow-hidden">
-            {isDevelopment && (
-                <Win95Button
-                    onClick={clearStore}
-                    className="absolute top-2 right-2 z-50 win95-btn text-xs"
-                >
-                    Reset Windows
-                </Win95Button>
-            )}
             <div className="p-4 h-[calc(100vh-40px)] desktop-area">
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <Droppable droppableId="desktop" type="icon">

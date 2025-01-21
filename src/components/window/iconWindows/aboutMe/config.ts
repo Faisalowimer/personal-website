@@ -151,9 +151,15 @@ New York, NY
 │   `
         ,
         principles: `<h3 class="text-base font-bold">Principles I live by and shapes me everyday...</h3>
-├── "Believe in god, yourself, and have faith."  
+├── "Believe in god, yourself, and have faith." 
 |
-├── "Choose how you want to live your life and avoid non existent mental barriers."  
+├── "A strong believer is better than a weak believer."  
+|
+├── "Honesty, integrity, and loyalty above all."  
+|
+├── "Choose how you want to live your life."  
+|
+├── "Avoid non existent mental barriers."  
 |
 ├── "Learn from yesterday, plan for tomorrow, and live in the present because it’s the only moment that matters."  
 |
@@ -161,9 +167,9 @@ New York, NY
 |
 ├── "Don't delay today's work to tomorrow."  
 |
-├── "Always start with 'What is the worst that can happen?' If I can afford it… I just do it."  
+├── "Always start with 'What is the worst that can happen?' If you can afford it… just do it."  
 |
-├── "Nothing is easy, nothing is hard. Put the work in and you will see the results."  
+├── "Nothing is easy, nothing is hard."  
 |
 ├── "Partner well in life and business. Your wife and your team will shape your future whether you like it or not."  
 |
@@ -173,7 +179,7 @@ New York, NY
 |
 ├── "Never been, never will be a kiss-ass."  
 |
-├── "Never did, never will do corporate jargon language." 
+├── "Never did, never will speak corporate jargon." 
 |
  
 `,

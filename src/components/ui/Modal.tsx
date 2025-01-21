@@ -31,7 +31,7 @@ export const Modal = ({ isOpen, onClose, type, content, title, images = [], curr
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="bg-[#c0c0c0] border-2 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf] max-w-2xl w-full mx-4">
+            <div className="bg-[#c0c0c0] border-2 shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf] max-w-[90vw] w-full max-h-[90vh] mx-4">
                 {/* Header */}
                 <div className="bg-[#000080] text-white px-2 py-1 flex justify-between items-center">
                     <span className="font-bold">{title || (type === 'image' ? 'Image Viewer' : 'External Link')}</span>
@@ -41,15 +41,17 @@ export const Modal = ({ isOpen, onClose, type, content, title, images = [], curr
                 </div>
 
                 {/* Content */}
-                <div className="p-4">
+                <div className="p-4 max-h-[calc(90vh-60px)] overflow-auto">
                     {type === 'image' ? (
                         <div className="relative">
-                            <div className="relative w-full aspect-video">
+                            <div className="relative min-h-[70vh]">
                                 <Image
                                     src={images[activeIndex] || content}
                                     alt="Project Image"
                                     fill
                                     className="object-contain"
+                                    sizes="(max-width: 768px) 90vw, 80vw"
+                                    priority
                                 />
                             </div>
                             {images.length > 1 && (

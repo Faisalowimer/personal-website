@@ -5,5 +5,5 @@ export const faisalContact = {
     PersonalWebsite: 'https://owimer.co',
     Email: 'faisal@owimer.co',
     Phone: '+1-857-756-5572',
-    Location: 'Manhattan, NY',
+    Location: 'New York, NY',
 }

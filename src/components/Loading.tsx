@@ -48,7 +48,7 @@ export const Loading = ({ onComplete }: LoadingProps) => {
             )}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] bg-[#c0c0c0] p-4 border-[2px] shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#ffffff,inset_-2px_-2px_grey,inset_2px_2px_#dfdfdf]">
                 <div className="text-center mb-6">
-                    <h2 className="text-lg font-bold mb-3">Welcome to my personal website!</h2>
+                    <h2 className="text-lg font-bold mb-3">Welcome to my digital print!</h2>
                     <div className="text-sm flex flex-col items-center justify-center gap-2">
                         {progress === 100 ? (
                             <span className="font-medium text-base">100% Hooray!</span>

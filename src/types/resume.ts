@@ -1,18 +1,24 @@
-export type ViewMode = 'resume' | 'certificates';
+export interface ContactInfo {
+    name: string;
+    location: string;
+    phone: string;
+    email: string;
+    linkedinUrl: string;
+    githubUrl: string;
+    personalWebsiteUrl?: string;
+}
 
-export type SortKey = 'date' | 'type';
-
-export interface Experience {
+export interface ExperienceType {
     title: string;
     company: string;
     companyUrl?: string;
     location: string;
     jobSummary: string;
     date: string;
-    points: string[];
+    description: string[];
 }
 
-export interface Education {
+export interface EducationType {
     degree: string;
     school: string;
     location: string;
@@ -28,25 +34,15 @@ export interface Certificate {
     title: string;
     name: string;
     issuer: string;
-    url?: string;
+    url: string;
     date: string;
     type: CertificateType;
     file?: string;
 }
 
 export interface ResumeData {
-    name: string;
-    title: string;
-    summary?: string;
-    contact: {
-        email: string;
-        phone: string;
-        location: string;
-        github?: string;
-        linkedin?: string;
-        portfolio?: string;
-    };
-    experience: Experience[];
-    education: Education[];
+    contact: ContactInfo;
+    experience: ExperienceType[];
+    education: EducationType[];
     certificates: Certificate[];
 }

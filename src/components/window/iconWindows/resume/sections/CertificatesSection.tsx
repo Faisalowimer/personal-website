@@ -1,6 +1,6 @@
 import { SortKey } from '@/components/window/iconWindows/resume/types';
 import { useState } from 'react';
-import { Certificate } from '@/components/window/iconWindows/resume/types';
+import { Certificate } from '@/types/resume';
 import { SortingButton } from '@/components/ui/sortingButton';
 import Image from 'next/image';
 
@@ -10,10 +10,10 @@ interface CertificatesSectionProps {
     onLinkClick: (url: string) => void;
 }
 
-export const CertificatesSection = ({ certificates, onSelect }: CertificatesSectionProps) => {
+export const CertificatesSection = ({ certificates = [], onSelect }: CertificatesSectionProps) => {
     const [sortKey, setSortKey] = useState<SortKey>('date');
 
-    const sortedCertificates = [...certificates].sort((a, b) => {
+    const sortedCertificates = [...(certificates || [])].sort((a, b) => {
         if (sortKey === 'date') {
             return new Date(b.date).getTime() - new Date(a.date).getTime();
         }

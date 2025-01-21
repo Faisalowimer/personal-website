@@ -12,6 +12,7 @@ export interface Window {
     isOpen: boolean;
     isActive: boolean;
     isMinimized?: boolean;
+    isMaximized?: boolean;
     component: string;
     order: number;
     position: Position;
@@ -21,13 +22,16 @@ export interface Window {
     icon: string;
 }
 
-interface WindowStore {
+export interface WindowStore {
     windows: Window[];
     activeWindow: string | null;
     selectedIcons: string[];
     openWindow: (id: string) => void;
     closeWindow: (id: string) => void;
+    minimizeWindow: (id: string) => void;
+    restoreWindow: (id: string) => void;
     setActiveWindow: (id: string) => void;
+    toggleMaximize: (id: string) => void;
     updateIconPosition: (id: string, position: Position) => void;
     updateWindowPosition: (id: string, position: Position) => void;
     toggleIconSelection: (id: string, multiSelect: boolean) => void;
@@ -35,13 +39,11 @@ interface WindowStore {
     bringToFront: (id: string) => void;
     resetPositions: () => void;
     clearStore: () => void;
-    minimizeWindow: (id: string) => void;
-    restoreWindow: (id: string) => void;
 }
 
 export const WIN95_ICONS = {
-    computer: '/icons/computer.png',
     about: '/icons/about.png',
+    computer: '/icons/computer.png',
     projects: '/icons/projects.png',
     resume: '/icons/resume.png',
     contact: '/icons/contact.png',
@@ -50,30 +52,32 @@ export const WIN95_ICONS = {
 
 const DEFAULT_WINDOWS: Window[] = [
     {
-        id: 'computer',
-        title: 'Tech Stack',
-        isOpen: false,
-        isActive: false,
-        isMinimized: false,
-        component: 'techstack',
-        order: 0,
-        position: { x: 20, y: 20 },
-        windowPosition: { x: 120, y: 10 },
-        zIndex: 0,
-        icon: WIN95_ICONS.computer
-    },
-    {
         id: 'about',
         title: 'About Me',
         isOpen: false,
         isActive: false,
         isMinimized: false,
+        isMaximized: false,
         component: 'about',
+        order: 0,
+        position: { x: 20, y: 20 },
+        windowPosition: { x: 120, y: 10 },
+        zIndex: 0,
+        icon: WIN95_ICONS.about
+    },
+    {
+        id: 'computer',
+        title: 'Tech Stack',
+        isOpen: false,
+        isActive: false,
+        isMinimized: false,
+        isMaximized: false,
+        component: 'techstack',
         order: 1,
         position: { x: 20, y: 130 },
         windowPosition: { x: 120, y: 90 },
         zIndex: 0,
-        icon: WIN95_ICONS.about
+        icon: WIN95_ICONS.computer
     },
     {
         id: 'projects',
@@ -81,6 +85,7 @@ const DEFAULT_WINDOWS: Window[] = [
         isOpen: false,
         isActive: false,
         isMinimized: false,
+        isMaximized: false,
         component: 'projects',
         order: 2,
         position: { x: 20, y: 220 },
@@ -94,6 +99,7 @@ const DEFAULT_WINDOWS: Window[] = [
         isOpen: false,
         isActive: false,
         isMinimized: false,
+        isMaximized: false,
         component: 'resume',
         order: 3,
         position: { x: 20, y: 320 },
@@ -107,6 +113,7 @@ const DEFAULT_WINDOWS: Window[] = [
         isOpen: false,
         isActive: false,
         isMinimized: false,
+        isMaximized: false,
         component: 'contact',
         order: 4,
         position: { x: 20, y: 420 },
@@ -206,8 +213,21 @@ export const useWindowStore = create(
                 }))
             })),
             clearStore: () => {
-                localStorage.removeItem('windows-store');
-                set({ windows: DEFAULT_WINDOWS, activeWindow: null, selectedIcons: [] });
+                localStorage.clear();
+                set({
+                    windows: DEFAULT_WINDOWS.map(window => ({
+                        ...window,
+                        isOpen: false,
+                        isActive: false,
+                        isMinimized: false,
+                        isMaximized: false,
+                        zIndex: 0,
+                        position: { ...window.position },
+                        windowPosition: window.windowPosition ? { ...window.windowPosition } : undefined
+                    })),
+                    activeWindow: null,
+                    selectedIcons: []
+                });
             },
             minimizeWindow: (id) => set((state) => ({
                 windows: state.windows.map(window =>
@@ -230,6 +250,22 @@ export const useWindowStore = create(
                             : { ...window, isActive: false }
                     ),
                     activeWindow: id,
+                };
+            }),
+            toggleMaximize: (id) => set((state) => {
+                const maxZIndex = Math.max(...state.windows.map(w => w.zIndex));
+                return {
+                    windows: state.windows.map((window) =>
+                        window.id === id
+                            ? {
+                                ...window,
+                                isMaximized: !window.isMaximized,
+                                isActive: true,
+                                zIndex: maxZIndex + 1
+                            }
+                            : window
+                    ),
+                    activeWindow: id
                 };
             }),
         }),

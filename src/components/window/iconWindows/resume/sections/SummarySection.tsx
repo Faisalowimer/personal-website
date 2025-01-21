@@ -1,4 +1,4 @@
-import { ResumeData } from '@/components/window/iconWindows/resume/types';
+import { ResumeData } from '@/types/resume';
 import { Win95Button } from '@/components/ui/Win95Button';
 import { useWindowStore } from '@/store/useWindowStore';
 
@@ -15,8 +15,8 @@ export const SummarySection = ({ data, onLinkClick }: SummarySectionProps) => {
             {/* Summary Header */}
             <div className="flex justify-between items-start mb-3">
                 <div>
-                    <h1 className="text-xl font-bold">{data.name}</h1>
-                    <h2 className="text-md">{data.title}</h2>
+                    <h1 className="text-xl font-bold">{data.contact.name}</h1>
+                    <h2 className="text-md">{data.contact.location}</h2>
                 </div>
                 <div className="text-sm text-gray-700">
                     <div
@@ -34,18 +34,14 @@ export const SummarySection = ({ data, onLinkClick }: SummarySectionProps) => {
 
             {/* Social Links */}
             <div>
-                {data.contact.linkedin && (
-                    <Win95Button onClick={() => onLinkClick(data.contact.linkedin!)}>
-                        LinkedIn
-                    </Win95Button>
-                )}
-                {data.contact.github && (
-                    <Win95Button onClick={() => onLinkClick(data.contact.github!)}>
-                        GitHub
-                    </Win95Button>
-                )}
-                {data.contact.portfolio && (
-                    <Win95Button onClick={() => onLinkClick(data.contact.portfolio!)}>
+                <Win95Button onClick={() => onLinkClick(data.contact.linkedinUrl)}>
+                    LinkedIn
+                </Win95Button>
+                <Win95Button onClick={() => onLinkClick(data.contact.githubUrl)}>
+                    GitHub
+                </Win95Button>
+                {data.contact.personalWebsiteUrl && (
+                    <Win95Button onClick={() => onLinkClick(data.contact.personalWebsiteUrl!)}>
                         Portfolio
                     </Win95Button>
                 )}

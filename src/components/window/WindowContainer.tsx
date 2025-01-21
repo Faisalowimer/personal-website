@@ -5,7 +5,8 @@ import { Projects } from './iconWindows/projects/Projects';
 import { TechStack } from './iconWindows/techStack/TechStack';
 import { useWindowStore } from '@/store/useWindowStore';
 import { Window as WindowType } from '@/store/useWindowStore';
-import { useState } from 'react';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { useEffect } from 'react';
 
 interface Position {
     x: number;
@@ -18,13 +19,19 @@ interface WindowProps {
 }
 
 export const WindowContainer = ({ window, position }: WindowProps) => {
-    const { closeWindow, setActiveWindow, minimizeWindow } = useWindowStore();
-    const [isMaximized, setIsMaximized] = useState(false);
-    const [previousPosition, setPreviousPosition] = useState<Position | null>(null);
+    const { closeWindow, setActiveWindow, minimizeWindow, toggleMaximize } = useWindowStore();
+    const isMobile = useIsMobile();
 
     const TASKBAR_HEIGHT = 50; // Height of the taskbar
     const TOP_MARGIN = 40; // Margin from the top of the screen
     const BOTTOM_MARGIN = 40; // Margin from the taskbar
+
+    useEffect(() => {
+        // Auto maximize on mobile when window opens
+        if (isMobile && window.isOpen && !window.isMinimized) {
+            toggleMaximize(window.id);
+        }
+    }, [isMobile, window.isOpen, window.id, toggleMaximize, window.isMinimized]);
 
     const handleWindowClick = () => {
         setActiveWindow(window.id);
@@ -32,11 +39,9 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
 
     const handleMaximizeClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        if (!isMaximized) {
-            // Store current position before maximizing
-            setPreviousPosition({ x: position?.x || 100, y: position?.y || 100 });
+        if (!isMobile) {
+            toggleMaximize(window.id);
         }
-        setIsMaximized(!isMaximized);
     };
 
     const handleMinimizeClick = (e: React.MouseEvent) => {
@@ -61,7 +66,7 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
         }
     };
 
-    const windowStyle = isMaximized ? {
+    const windowStyle = window.isMaximized || isMobile ? {
         position: 'fixed',
         left: '50%',
         top: TOP_MARGIN,
@@ -71,8 +76,8 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
         zIndex: window.zIndex,
     } as const : {
         position: 'absolute',
-        left: previousPosition?.x || position?.x || 100,
-        top: previousPosition?.y || position?.y || 100,
+        left: position?.x || 100,
+        top: position?.y || 100,
         width: '650px',
         height: '500px',
         zIndex: window.zIndex,
@@ -104,12 +109,14 @@ export const WindowContainer = ({ window, position }: WindowProps) => {
                     >
                         _
                     </button>
-                    <button
-                        onClick={handleMaximizeClick}
-                        className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
-                    >
-                        {isMaximized ? '❐' : '□'}
-                    </button>
+                    {!isMobile && (
+                        <button
+                            onClick={handleMaximizeClick}
+                            className="px-2 bg-[#c0c0c0] text-black hover:bg-[#dfdfdf]"
+                        >
+                            {window.isMaximized ? '❐' : '□'}
+                        </button>
+                    )}
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
