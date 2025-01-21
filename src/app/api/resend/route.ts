@@ -13,15 +13,12 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, email, subject, message } = contactFormSchema.parse(body);
 
-        console.log('Attempting to send email with:', { name, email, subject });
-
-        // TODO: Change to my email once domain is confirmed
         const { data, error } = await resend.emails.send({
             from: "onboarding@resend.dev",
-            to: ["delivered@resend.dev"],
+            to: "faisal@owimer.co",
             replyTo: email,
-            subject: `[Portfolio Contact] ${subject}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+            subject: `[Portfolio Contact] ${subject} from ${name}`,
+            text: `From: ${name} <${email}>\n\nMessage:\n${message}`,
         });
 
         if (error) {
@@ -32,7 +29,6 @@ export async function POST(request: Request) {
             );
         }
 
-        console.log('Email sent successfully:', data);
         return NextResponse.json(
             { message: 'Email sent successfully', data },
             { status: 200 }

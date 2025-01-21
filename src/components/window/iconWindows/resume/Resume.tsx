@@ -40,17 +40,39 @@ export const Resume = () => {
     const getStatusMessage = () => {
         if (loading) return 'Loading data...';
         if (error) return error;
-        if (viewMode === 'certificates') return `${resumeData.certificates.length} certificates`;
+        if (viewMode === 'certificates') return `${resumeData?.certificates?.length || 0} certificates`;
         if (isUsingLocalData) return 'Using local data, information may not be up to date.';
         return 'Resume loaded successfully';
     };
+
+    // Show loading indicator until data is ready
+    if (loading || !dataReady) {
+        return (
+            <div className="flex flex-col h-full text-xs">
+                <WindowHeader
+                    icon={WIN95_ICONS.resume}
+                    title="Loading Resume..."
+                />
+                <div className="flex-1 p-2 overflow-auto">
+                    <div className="h-full flex items-center justify-center">
+                        <LoadingIndicator
+                            message={dataReady ? "Preparing resume & certificates..." : "Fetching resume & certificates data..."}
+                        />
+                    </div>
+                </div>
+                <WindowStatusBar>
+                    <div>{getStatusMessage()}</div>
+                </WindowStatusBar>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col h-full text-xs">
             {/* Header section*/}
             <WindowHeader
                 icon={WIN95_ICONS.resume}
-                title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.name} Resume`}
+                title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.contact.name} Resume`}
                 actions={
                     <Win95Button
                         onClick={() => handleLinkClick('https://resume-faisal-owimer.vercel.app/')}
@@ -77,13 +99,7 @@ export const Resume = () => {
             </WindowToolbar>
 
             <div className="flex-1 p-2 overflow-auto">
-                {loading ? (
-                    <div className="h-full flex items-center justify-center">
-                        <LoadingIndicator
-                            message={dataReady ? "Preparing resume & certificates..." : "Fetching resume & certificates data..."}
-                        />
-                    </div>
-                ) : viewMode === 'certificates' ? (
+                {viewMode === 'certificates' ? (
                     selectedCertificate ? (
                         <CertificateDetails
                             certificateId={selectedCertificate}

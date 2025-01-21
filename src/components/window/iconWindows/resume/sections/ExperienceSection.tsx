@@ -1,7 +1,7 @@
-import { Experience } from '@/components/window/iconWindows/resume/types';
+import { ExperienceType } from '@/types/resume';
 
 interface ExperienceSectionProps {
-    experiences: Experience[];
+    experiences: ExperienceType[];
     onLinkClick: (url: string) => void;
 }
 
@@ -25,7 +25,7 @@ export const ExperienceSection = ({ experiences, onLinkClick }: ExperienceSectio
                         <div className="text-gray-600 mb-2">{exp.location}</div>
                         <div className="text-gray-700 mb-3">{exp.jobSummary}</div>
                         <ul className="list-none space-y-2">
-                            {exp.points.map((point, idx) => (
+                            {exp.description.map((point: string, idx: number) => (
                                 <li key={idx} className="text-gray-700 pl-4 relative">
                                     <span className="absolute left-0">•</span>
                                     {point}

@@ -18,7 +18,7 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
     const handleImageClick = (index: number) => {
         setModalContent({
             type: 'image',
-            content: project.images[index],
+            content: project.images?.[index] || '',
             imageIndex: index
         });
     };
@@ -102,6 +102,12 @@ export const ProjectDetails = ({ projectId, onClose }: ProjectDetailsProps) => {
                                 <li key={index} className="mb-2">{contribution}</li>
                             ))}
                         </ul>
+                    </div>
+
+                    {/* Status */}
+                    <div>
+                        <h3 className="text-sm font-bold mb-2 border-b border-gray-400">Status</h3>
+                        <p>{project.status}</p>
                     </div>
 
                     {/* Links */}

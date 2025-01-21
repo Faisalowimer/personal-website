@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { RESUME_DATA } from '@/components/window/iconWindows/resume/config';
-import { ResumeData, ViewMode } from '@/components/window/iconWindows/resume/types';
+import { ResumeData } from '@/types/resume';
+
+type ViewMode = 'resume' | 'certificates';
 
 interface ResumeStore {
     resumeData: ResumeData;
@@ -19,8 +21,13 @@ interface ResumeStore {
     fetchResumeData: () => Promise<void>;
 }
 
+const MIN_LOADING_TIME = 5500; // Minimum loading time in milliseconds
+
 export const useResumeStore = create<ResumeStore>((set) => ({
-    resumeData: RESUME_DATA,
+    resumeData: {
+        ...RESUME_DATA,
+        certificates: RESUME_DATA.certificates || []
+    },
     loading: true,
     dataReady: false,
     error: null,
@@ -35,6 +42,7 @@ export const useResumeStore = create<ResumeStore>((set) => ({
     setSelectedCertificate: (id) => set({ selectedCertificate: id }),
     fetchResumeData: async () => {
         set({ loading: true, error: null, dataReady: false });
+        const startTime = Date.now();
 
         try {
             const response = await fetch('/api/resume');
@@ -44,27 +52,42 @@ export const useResumeStore = create<ResumeStore>((set) => ({
             }
 
             const data = await response.json();
+
+            // Calculate remaining time to meet minimum loading duration
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, MIN_LOADING_TIME - elapsedTime);
+
+            // Wait for the remaining time if needed
+            if (remainingTime > 0) {
+                await new Promise(resolve => setTimeout(resolve, remainingTime));
+            }
+
             set({
                 resumeData: data,
                 error: null,
                 isUsingLocalData: false,
+                loading: false,
                 dataReady: true
             });
-        } catch (err) {
-            console.error('Error fetching resume data:', err);
-            // Wait longer to ensure loading indicator reaches ~90%
-            await new Promise(resolve => setTimeout(resolve, 4000));
+        } catch (error) {
+            console.error('Error fetching resume data:', error);
+
+            // Calculate remaining time to meet minimum loading duration
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, MIN_LOADING_TIME - elapsedTime);
+
+            // Wait for the remaining time if needed
+            if (remainingTime > 0) {
+                await new Promise(resolve => setTimeout(resolve, remainingTime));
+            }
 
             set({
                 resumeData: RESUME_DATA,
-                error: 'Unable to fetch latest data - Using local version',
+                error: 'Failed to fetch resume data. Using local data.',
                 isUsingLocalData: true,
+                loading: false,
                 dataReady: true
             });
         }
-
-        // Wait additional time to ensure loading indicator reaches 100%
-        await new Promise(resolve => setTimeout(resolve, 2500));
-        set({ loading: false });
-    },
+    }
 })); 
