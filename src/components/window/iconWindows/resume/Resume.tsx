@@ -75,7 +75,7 @@ export const Resume = () => {
                 title={viewMode === 'certificates' ? 'Certificates Overview' : `${resumeData.contact.name} Resume`}
                 actions={
                     <Win95Button
-                        onClick={() => handleLinkClick('https://resume-faisal-owimer.vercel.app/')}
+                        onClick={() => handleLinkClick('https://resume.owimer.co/')}
                     >
                         View Original
                     </Win95Button>
