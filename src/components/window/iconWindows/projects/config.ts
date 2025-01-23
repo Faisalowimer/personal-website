@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
         ],
         status: ProjectStatus.DEPLOYED,
         links: {
-            live: 'https://resume-faisal-owimer.vercel.app/',
+            live: 'https://resume.owimer.co/',
             github: 'https://github.com/Faisalowimer/resume'
         },
         role: 'Frontend',
@@ -126,9 +126,19 @@ export const PROJECTS: Project[] = [
             'Docker',
             'Google Maps API',
         ],
-        // images: [
-        //     '',
-        // ],
+        images: [
+            '/projects/ihsan-1.png',
+            '/projects/ihsan-2.png',
+            '/projects/ihsan-3.png',
+            '/projects/ihsan-4.png',
+            '/projects/ihsan-5.png',
+            '/projects/ihsan-6.png',
+            '/projects/ihsan-7.png',
+            '/projects/ihsan-8.png',
+            '/projects/ihsan-9.png',
+            '/projects/ihsan-10.png',
+            '/projects/ihsan-11.png',
+        ],
         status: ProjectStatus.IN_DEVELOPMENT,
         links: {
             //live: '',
