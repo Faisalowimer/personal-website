@@ -26,6 +26,32 @@ interface Project {
 
 export const PROJECTS: Project[] = [
     {
+        id: 'project-0',
+        title: 'Ihsan Website',
+        type: 'Website',
+        date: 'Mar, 2025',
+        description: 'A website for Ihsan Tech, Inc., a platform connecting Muslim communities with mosques, processing donations, supporting community fundraising, events, and streamlining back-office operations.',
+        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Motion', 'Shadcn'],
+        images: [
+            '/ihsan-website-1.png',
+            '/ihsan-website-2.png',
+            '/ihsan-website-3.png',
+            '/ihsan-website-4.png',
+            '/ihsan-website-5.png',
+            '/ihsan-website-6.png',
+            '/ihsan-website-7.png',
+            '/ihsan-website-8.png',
+        ],
+        status: ProjectStatus.DEPLOYED,
+        links: {
+            live: 'https://www.ihsan.tech',
+        },
+        role: 'Web Developer',
+        contributions: [
+            'Developed a responsive and interactive website using Next.js, Tailwind CSS, and Motion for an intuitive user experience',
+        ]
+    },
+    {
         id: 'project-1',
         title: 'Personal Portfolio',
         type: 'Web App',
@@ -54,9 +80,9 @@ export const PROJECTS: Project[] = [
         ],
         status: ProjectStatus.DEPLOYED,
         links: {
+            live: 'https://owimer.co',
             github: 'https://github.com/Faisalowimer/personal-website',
             //demo: 'https://owimer.co',
-            //live: 'https://owimer.co'
         },
         role: 'Full Stack',
         contributions: [
