@@ -13,12 +13,27 @@ export const RESUME_DATA: ResumeData = {
     },
     experience: [
         {
+            title: "Product Engineer",
+            company: "Goodie AI",
+            companyUrl: "https://www.higoodie.com/",
+            location: "Manhattan, NY",
+            jobSummary: "Leading product and engineering team to build the future of AI search.",
+            date: "Feb 2025 – Present",
+            description: [
+                "Spearheading a full webapp rebrand, collaborating with design to deliver intuitive, high-performance interfaces and ship new features that improve UX and market positioning",
+                "Led SOC 2 Type 1 & Type 2 certifications and optimized team workflows by introducing Linear for project management and enhancing CI/CD pipeline efficiency",
+                "Partnered with clients to incorporate feedback into product workflows, iterating quickly to validate assumptions and driving revenue to $50K+ MRR",
+                "Redesigned component library in React/TypeScript and built Goodie admin portal, delivering scalable, reusable components that doubled development velocity and accelerated feature delivery.",
+            ]
+
+        },
+        {
             title: "Founder",
             company: "Ihsan Tech, Inc.",
             companyUrl: "https://ihsan.tech",
             location: "Manhattan, NY",
             date: "Nov 2024 - Present",
-            jobSummary: "Founded a platform connecting Muslim communities with mosques, processing +$19k in donations, supporting community fundraising, events, and streamlining back-office management.",
+            jobSummary: "Founded a platform connecting Muslim communities with mosques, processing +$19k in donations, supporting community fundraising, events, and streamlining back-office operations.",
             description: [
                 "Designed and implemented responsive, feature-rich frontend using Next.js, ClerkAuth, React, Zustand, Shadcn, TailwindCSS, and Framer Motion, ensuring seamless user interface and experience",
                 "Built scalable backend and database infrastructure using Docker, Redis caching, and Prisma ORM, with comprehensive RESTful API integrations (Stripe, Clerk, SendGrid, Resend, QuickBooks)",
